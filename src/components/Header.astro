@@ -1,0 +1,20 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { DEFAULT_LANGUAGE } from "../i18n/utils";
+import BurguerButton from "./BurgerButton.astro";
+
+const homeUrl = getRelativeLocaleUrl(Astro.currentLocale ?? DEFAULT_LANGUAGE);
+---
+
+<header class="w-full flex justify-between p-5 bg-transparent">
+  <a href={homeUrl}>
+    <picture>
+      <!-- Desktop -->
+      <source media="(min-width: 768px)" srcset="horizontal-imaging.svg" />
+
+      <!-- Mobile -->
+      <img src="/isotype.svg?a" alt="Mar de Media" class="w-1/6" />
+    </picture>
+  </a>
+  <BurguerButton />
+</header>

@@ -1,0 +1,14 @@
+---
+import Burguer from "./icons/Burger.astro";
+---
+
+<button id="burger-button">
+  <Burguer />
+</button>
+
+<script>
+  import { $ } from "../utils/dom";
+
+  const $burguerButton = $<HTMLButtonElement>("#burger-button")!;
+  $burguerButton.addEventListener("click", (e) => alert("aside"));
+</script>
