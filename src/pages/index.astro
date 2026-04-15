@@ -1,4 +1,5 @@
 ---
+import Button from "../components/Button.astro";
 import Carousel from "../components/Carousel.astro";
 import SectionContainer from "../components/containers/SectionContainer.astro";
 import Hero from "../components/Hero.astro";
@@ -61,13 +62,16 @@ const slides = [
     <Carousel slides={slides} className="mb-4" />
 
     <section class="relative">
-      <img src="https://placehold.co/800x500" alt="" class="w-full" />
-      <div class="absolute inset-0 p-2 flex flex-col justify-center">
+      <img src="/contact.webp" alt="" class="w-full aspect-square opacity-30" />
+      <div
+        class="absolute inset-0 p-2 flex flex-col justify-center items-center gap-4"
+      >
         <h2 class="text-5xl">
           Your journey to <span class="text-secondary"
             >something extraordinary</span
           > starts here.
         </h2>
+        <Button text="Begin the Voyage" className="w-1/2" />
       </div>
     </section>
   </div>
