@@ -1,8 +1,12 @@
 ---
-const { text, className } = Astro.props;
+const { text, className = "", as = "button", href, ...props } = Astro.props;
+
+const Tag = as;
 ---
 
-<button
+<Tag
+  {...as === "a" ? { href } : {}}
+  {...props}
   class={`bg-[#DEF3F4] text-black px-6 py-3 flex items-center justify-center
   transition-all duration-300 ease-out
   hover:scale-105 hover:shadow-[0_10px_30px_rgba(34,175,179,0.3)]
@@ -11,4 +15,4 @@ const { text, className } = Astro.props;
   ${className}`}
 >
   <span class="relative z-10 uppercase">{text}</span>
-</button>
+</Tag>

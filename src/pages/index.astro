@@ -37,7 +37,7 @@ const slides = [
 >
   <Hero />
   <div class="h-full bg-linear-to-t from-third to-primary">
-    <SectionContainer>
+    <SectionContainer id="intro-section">
       <h2 class="text-4xl">Where your ideas <br /> come to life</h2>
       <p>
         At Mar de Media, We bring your vision to life through digital
@@ -45,15 +45,21 @@ const slides = [
       </p>
     </SectionContainer>
 
-    <SectionContainer>
+    <SectionContainer id="services-section">
       <h2 class="text-3xl">
         Experience <em class="text-secondary">Mar de Media</em> the <br /> way It's
         mean to be
       </h2>
     </SectionContainer>
     <Carousel slides={slides} />
+    <Button
+      text="Dive In"
+      className="w-1/2 m-auto mt-2"
+      as="a"
+      href="#contact-section"
+    />
 
-    <SectionContainer>
+    <SectionContainer id="packages-section">
       <h2 class="text-3xl">
         Take your brand to the <span class="text-secondary">next level</span>
       </h2>
@@ -61,7 +67,7 @@ const slides = [
     </SectionContainer>
     <Carousel slides={slides} className="mb-4" />
 
-    <section class="relative">
+    <section class="relative" id="contact-section">
       <img src="/contact.webp" alt="" class="w-full aspect-square opacity-30" />
       <div
         class="absolute inset-0 p-2 flex flex-col justify-center items-center gap-4"
