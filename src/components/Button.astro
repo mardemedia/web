@@ -1,0 +1,14 @@
+---
+const { text, className } = Astro.props;
+---
+
+<button
+  class={`bg-[#DEF3F4] text-black px-6 py-3 flex items-center justify-center
+  transition-all duration-300 ease-out
+  hover:scale-105 hover:shadow-[0_10px_30px_rgba(34,175,179,0.3)]
+  active:scale-95
+  relative overflow-hidden
+  ${className}`}
+>
+  <span class="relative z-10 uppercase">{text}</span>
+</button>
