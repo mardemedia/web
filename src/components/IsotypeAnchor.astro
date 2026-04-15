@@ -1,0 +1,16 @@
+---
+interface Props {
+  homeUrl: string;
+}
+const { homeUrl }: Props = Astro.props;
+---
+
+<a href={homeUrl}>
+  <picture>
+    <!-- Desktop -->
+    <source media="(min-width: 768px)" srcset="horizontal-imaging.svg" />
+
+    <!-- Mobile -->
+    <img src="/isotype.svg?a" alt="Mar de Media" class="w-1/6" />
+  </picture>
+</a>

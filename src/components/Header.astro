@@ -2,19 +2,23 @@
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { DEFAULT_LANGUAGE } from "../i18n/utils";
 import BurguerButton from "./BurgerButton.astro";
+import AsideMenu from "./AsideMenu.astro";
+import IsotypeAnchor from "./IsotypeAnchor.astro";
 
 const homeUrl = getRelativeLocaleUrl(Astro.currentLocale ?? DEFAULT_LANGUAGE);
 ---
 
 <header class="w-full flex justify-between p-5 bg-[#DEF3F4]">
-  <a href={homeUrl}>
-    <picture>
-      <!-- Desktop -->
-      <source media="(min-width: 768px)" srcset="horizontal-imaging.svg" />
-
-      <!-- Mobile -->
-      <img src="/isotype.svg?a" alt="Mar de Media" class="w-1/6" />
-    </picture>
-  </a>
+  <IsotypeAnchor homeUrl={homeUrl} />
   <BurguerButton />
+  <AsideMenu />
 </header>
+
+<script>
+  import { $ } from "../utils/dom";
+
+  const $burguerButton = $<HTMLButtonElement>("#burger-button")!;
+  $burguerButton.addEventListener("click", () => {
+    window.dispatchEvent(new Event("aside-toggle"));
+  });
+</script>

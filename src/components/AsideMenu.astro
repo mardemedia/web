@@ -1,0 +1,61 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { DEFAULT_LANGUAGE } from "../i18n/utils";
+import IsotypeAnchor from "./IsotypeAnchor.astro";
+import CrossButton from "./CrossButton.astro";
+const homeUrl = getRelativeLocaleUrl(Astro.currentLocale ?? DEFAULT_LANGUAGE);
+---
+
+<aside
+  id="aside-menu"
+  class="w-full h-full bg-red-200 inset-0 fixed z-20"
+  style="transform: translateX(100%)"
+>
+  <header class="flex justify-between p-5 text-black">
+    <IsotypeAnchor homeUrl={homeUrl} />
+
+    <CrossButton />
+  </header>
+</aside>
+
+<script>
+  import { $ } from "../utils/dom";
+
+  const $asideMenu = $("#aside-menu")!;
+  const $closeButton = $("#close-button")!;
+
+  let isOpen = false;
+
+  const openMenu = () => {
+    $asideMenu.animate(
+      [{ transform: "translateX(100%)" }, { transform: "translateX(0%)" }],
+      {
+        duration: 350,
+        easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+        fill: "forwards",
+      },
+    );
+    isOpen = true;
+  };
+
+  const closeMenu = () => {
+    $asideMenu.animate(
+      [{ transform: "translateX(0%)" }, { transform: "translateX(100%)" }],
+      {
+        duration: 300,
+        easing: "cubic-bezier(0.4, 0, 1, 1)",
+        fill: "forwards",
+      },
+    );
+    isOpen = false;
+  };
+
+  const toggleMenu = () => {
+    console.log("here");
+    isOpen ? closeMenu() : openMenu();
+  };
+
+  window.addEventListener("aside-toggle", toggleMenu);
+
+  $closeButton.addEventListener("click", closeMenu);
+</script>
