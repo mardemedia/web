@@ -7,8 +7,9 @@ import BubbleContainer from "../components/containers/BubbleContainer.astro";
 interface Props {
   metaTitle: string;
   metaDescription: string;
+  className?: string;
 }
-const { metaTitle, metaDescription }: Props = Astro.props;
+const { metaTitle, metaDescription, className }: Props = Astro.props;
 ---
 
 <html lang={Astro.currentLocale}>
