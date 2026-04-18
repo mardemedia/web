@@ -1,0 +1,27 @@
+---
+import SecondaryLayout from "../../layouts/SecondaryLayout.astro";
+
+const year = new Date().getFullYear();
+---
+
+<SecondaryLayout
+  metaTitle="Coming Soon | Mar de Media"
+  metaDescription="Estamos preparando algo increíble para ti."
+>
+  <section
+    class="min-h-screen flex flex-col items-center justify-center text-center bg-linear-to-t from-third to-primary px-6"
+  >
+    <h1 class="text-5xl md:text-7xl font-bold mb-6">
+      Coming <span class="text-secondary">Soon</span>
+    </h1>
+
+    <p class="max-w-xl text-lg opacity-80 mb-8">
+      We’re crafting something amazing at Mar de Media. Stay tuned your next
+      digital experience is on the way.
+    </p>
+
+    <footer class="flex justify-center items-center text-white">
+      &#169; Mar de Media {year}. All Rights Reserved
+    </footer>
+  </section>
+</SecondaryLayout>

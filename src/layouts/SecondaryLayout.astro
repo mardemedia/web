@@ -1,0 +1,37 @@
+---
+import "./../styles/global.css";
+import BubbleContainer from "../components/containers/BubbleContainer.astro";
+
+interface Props {
+  metaTitle: string;
+  metaDescription: string;
+  className?: string;
+}
+
+const { metaTitle, metaDescription, className }: Props = Astro.props;
+---
+
+<html lang={Astro.currentLocale} class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={metaDescription} />
+    {/* FONTS */}
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="./../components/custom-elements/BubbleSvg"></script>
+    <title>{metaTitle}</title>
+  </head>
+  <body
+    class={`min-h-screen relative flex flex-col justify-between text-white ${className}`}
+  >
+    <BubbleContainer />
+    <div class="flex-1">
+      <slot />
+    </div>
+  </body>
+</html>
