@@ -9,7 +9,7 @@
   export function spawnBubble(root: HTMLElement | Element) {
     const bubble = document.createElement("bubble-svg");
 
-    const size = random(40, 90);
+    const size = random(10, 75);
     const x = random(0, Math.max(0, root.clientWidth - size));
     const duration = random(5000, 10000);
     const opacity = random(0.3, 0.6);
@@ -51,6 +51,8 @@
     setInterval(() => spawnBubble(root), random(600, 1000));
   }
 
-  const $container = document.getElementById("bubble-container")!;
-  startBubbleLoop($container);
+  requestAnimationFrame(() => {
+    const $container = document.getElementById("bubble-container")!;
+    startBubbleLoop($container);
+  });
 </script>
