@@ -68,16 +68,23 @@ const slides = [
     <Carousel slides={slides} className="mb-4" />
 
     <section class="relative" id="contact-section">
-      <img src="/contact.webp" alt="" class="w-full aspect-square opacity-30" />
+      <img
+        src="/contact.webp"
+        alt=""
+        class="w-full aspect-square md:aspect-video lg:aspect-21/9 object-cover opacity-30"
+      />
+
       <div
-        class="absolute inset-0 p-2 flex flex-col justify-center items-center gap-4"
+        class="absolute inset-0 p-4 flex flex-col justify-center items-center gap-4 text-center"
       >
-        <h2 class="text-5xl">
-          Your journey to <span class="text-secondary"
-            >something extraordinary</span
-          > starts here.
+        <h2 class="text-3xl md:text-4xl lg:text-5xl">
+          Your journey to <span class="text-secondary">
+            something extraordinary
+          </span>
+          starts here.
         </h2>
-        <Button text="Begin the Voyage" className="w-1/2" />
+
+        <Button text="Begin the Voyage" className="w-2/3 md:w-auto" />
       </div>
     </section>
   </div>
