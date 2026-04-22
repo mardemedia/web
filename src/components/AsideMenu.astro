@@ -3,30 +3,124 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 import { DEFAULT_LANGUAGE } from "../i18n/utils";
 import IsotypeAnchor from "./IsotypeAnchor.astro";
 import CrossButton from "./CrossButton.astro";
+import RightArrow from "./icons/RightArrow.astro";
+import FBIcon from "./icons/FBIcon.astro";
+import IGIcon from "./icons/IGIcon.astro";
 
 const homeUrl = getRelativeLocaleUrl(Astro.currentLocale ?? DEFAULT_LANGUAGE);
+
+interface navLinks {
+  label: string;
+  description: string;
+  url: string;
+}
+
+const navLinks: Record<string, navLinks> = {
+  services: {
+    label: "Services",
+    description: "Take a dive into our services",
+    url: "#",
+  },
+  packages: {
+    label: "Packages",
+    description: "Personalized packages for you",
+    url: "#",
+  },
+  contact: {
+    label: "Contact us",
+    description: "Connect with us",
+    url: "#",
+  },
+};
 ---
 
 <aside id="aside-menu" class="fixed inset-0 z-20 pointer-events-none">
   <div
     id="aside-panel"
-    class="absolute inset-0 bg-[#DEF3F4]"
+    class="absolute inset-0 bg-[#DEF3F4] flex flex-col"
     style="transform: translateX(100%); opacity: 0;"
   >
-    <header class="flex justify-between p-5 text-black">
+    <header class="flex justify-between text-black py-5 px-5">
       <IsotypeAnchor homeUrl={homeUrl} />
       <CrossButton />
     </header>
-    <nav class="h-full bg-red-200"></nav>
+
+    <section class="flex flex-col flex-1 h-dvh">
+      <div class="flex-1 overflow-y-auto">
+        <nav>
+          <ul class="pt-5">
+            {
+              Object.values(navLinks).map((x) => (
+                <li>
+                  <a
+                    data-nav-link
+                    class="text-third pb-5 px-5 flex justify-between items-center"
+                    href={`${x.url}`}
+                  >
+                    <div class="flex flex-col uppercase gap-1">
+                      {x.label}
+                      <span class="normal-case opacity-70">
+                        {x.description}
+                      </span>
+                    </div>
+                    <RightArrow class="text-third" />
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+
+        <hr class="text-third m-5 opacity-70" />
+      </div>
+
+      <div class="mt-auto">
+        <div class="p-5 text-third">
+          <h2 class="text-xl mb-4">Let's Connect</h2>
+          <address>
+            <p>
+              Email:
+              <a href="mailto:mardemedia@gmail.com"> mardemedia@gmail.com </a>
+            </p>
+
+            <p>Puerto Vallarta, Jalisco, México.</p>
+          </address>
+        </div>
+
+        <div class="flex items-center mx-5">
+          <div class="grow border-t border-third"></div>
+          <span class="mx-4 text-third opacity-70">Follow Us</span>
+          <div class="grow border-t border-third"></div>
+        </div>
+
+        <footer class="p-5 text-third">
+          <nav aria-label="Social media">
+            <ul class="flex gap-4 items-center justify-center">
+              <li>
+                <a href="https://facebook.com" target="_blank" rel="noopener">
+                  <FBIcon class="text-third" />
+                </a>
+              </li>
+              <li>
+                <a href="https://instagram.com" target="_blank" rel="noopener">
+                  <IGIcon class="text-third" />
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </footer>
+      </div>
+    </section>
   </div>
 </aside>
 
 <script>
-  import { $ } from "../utils/dom";
+  import { $, $$ } from "../utils/dom";
 
   const $asideMenu = $<HTMLElement>("#aside-menu")!;
   const $panel = $("#aside-panel")!;
   const $closeButton = $("#close-button")!;
+  const $navLinks = $$("[data-nav-link]");
 
   let isOpen = false;
 
@@ -91,4 +185,19 @@ const homeUrl = getRelativeLocaleUrl(Astro.currentLocale ?? DEFAULT_LANGUAGE);
   window.addEventListener("aside-toggle", toggleMenu);
 
   $closeButton?.addEventListener("click", closeMenu);
+
+  $navLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const href = link.getAttribute("href");
+
+      if (href && href.startsWith("#")) {
+        e.preventDefault();
+        closeMenu();
+
+        document.querySelector(href)?.scrollIntoView({
+          behavior: "smooth",
+        });
+      }
+    });
+  });
 </script>
