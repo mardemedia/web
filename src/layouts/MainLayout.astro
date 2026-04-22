@@ -3,6 +3,7 @@ import "./../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import BubbleContainer from "../components/containers/BubbleContainer.astro";
+import UpButton from "../components/UpButton.astro";
 
 interface Props {
   metaTitle: string;
@@ -36,5 +37,6 @@ const { metaTitle, metaDescription, className }: Props = Astro.props;
       <slot />
     </div>
     <Footer />
+    <UpButton />
   </body>
 </html>
