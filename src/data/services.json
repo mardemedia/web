@@ -1,0 +1,23 @@
+[
+  {
+    "img": "https://placehold.co/800x500/4F46E5/ffffff?text=Slide+1",
+    "tag": "Nuevo",
+    "title": "Producto Premium",
+    "description": "Descripción breve",
+    "price": "$299"
+  },
+  {
+    "img": "https://placehold.co/800x500/0F6E56/ffffff?text=Slide+2",
+    "tag": "Oferta",
+    "title": "Artículo Especial",
+    "description": "Descripción breve",
+    "price": "$149"
+  },
+  {
+    "img": "https://placehold.co/800x500/993C1D/ffffff?text=Slide+3",
+    "tag": "Popular",
+    "title": "Colección Exclusiva",
+    "description": "Descripción breve",
+    "price": "$499"
+  }
+]

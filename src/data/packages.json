@@ -1,0 +1,26 @@
+[
+  {
+    "img": "https://placehold.co/800x800/1E3A8A/ffffff?text=Basic+Package",
+    "tag": "Starter",
+    "title": "Basic Package",
+    "description": "Perfect for getting started with essential features.",
+    "price": "$99",
+    "features": ["1 Project", "Basic Support", "Standard Assets"]
+  },
+  {
+    "img": "https://placehold.co/800x800/065F46/ffffff?text=Pro+Package",
+    "tag": "Popular",
+    "title": "Pro Package",
+    "description": "Advanced tools for growing your business.",
+    "price": "$249",
+    "features": ["5 Projects", "Priority Support", "Premium Assets"]
+  },
+  {
+    "img": "https://placehold.co/800x800/7C2D12/ffffff?text=Elite+Package",
+    "tag": "Premium",
+    "title": "Elite Package",
+    "description": "All-inclusive solution for professionals.",
+    "price": "$499",
+    "features": ["Unlimited Projects", "24/7 Support", "Exclusive Assets"]
+  }
+]
