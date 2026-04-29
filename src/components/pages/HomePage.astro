@@ -28,10 +28,10 @@ const packages = await getAllPackages();
 
     <section
       id="services-section"
-      class="lg:grid lg:grid-cols-2 lg:items-center lg:p-16"
+      class="px-5 lg:grid lg:grid-cols-2 lg:items-center lg:p-16 max-w-7xl mx-auto xl:max-w-[100rem]"
     >
-      <div class="flex flex-col items-center gap-12">
-        <h2 class="text-3xl lg:text-5xl">
+      <div class="flex flex-col items-start gap-12">
+        <h2 class="text-3xl lg:text-5xl text-start">
           Experience <em class="text-secondary">Mar de Media</em> the <br /> way It's
           mean to be
         </h2>
@@ -40,14 +40,64 @@ const packages = await getAllPackages();
       <Carousel slides={services} />
     </section>
 
-    <section class="lg:grid lg:grid-cols-2 lg:items-center lg:p-16">
-      <Carousel slides={packages} className="mb-4" />
+    <section
+      id="packages-section"
+      class="bg-transparent px-5 py-20 lg:px-16 lg:py-28 max-w-7xl mx-auto xl:max-w-[100rem]"
+    >
+      <div class="mx-auto">
+        <div class="mb-24 lg:mb-10">
+          <p
+            class="mb-2 text-xs font-medium uppercase tracking-[0.35em] text-white italic"
+          >
+            Services
+          </p>
 
-      <div id="packages-section" class="text-center p-5 flex flex-col gap-4">
-        <h2 class="text-3xl lg:text-5xl">
-          Take your brand to the <span class="text-secondary">next level</span>
-        </h2>
-        <p class="lg:text-xl">See our packages and choose your next step</p>
+          <h2
+            class="max-w-xl text-5xl leading-none tracking-tight text-white lg:text-7xl"
+          >
+            Packages
+          </h2>
+        </div>
+
+        <div class="divide-y divide-primary/15">
+          {
+            packages.map((item, index) => (
+              <article class="grid gap-8 py-12 lg:grid-cols-[90px_260px_1fr_280px_48px] lg:items-start lg:gap-8">
+                <div class="text-5xl leading-none text-white/15 lg:text-6xl">
+                  {String(index + 1).padStart(2, "0")}
+                </div>
+
+                <div>
+                  <p class="mb-4 text-xs font-medium uppercase tracking-[0.35em] text-secondary">
+                    {item.tag}
+                  </p>
+
+                  <h3 class="text-3xl leading-none tracking-tight text-white lg:text-4xl">
+                    {item.title}
+                  </h3>
+                </div>
+
+                <p class="max-w-md text-base leading-relaxed text-white lg:text-lg">
+                  {item.description}
+                </p>
+
+                <ul class="space-y-2 text-sm leading-relaxed text-white/75 lg:text-base">
+                  {item.features.map((feature) => (
+                    <li>{feature}</li>
+                  ))}
+                </ul>
+
+                <a
+                  href="#contact"
+                  aria-label={`View ${item.title} package`}
+                  class="flex size-12 items-center justify-center border border-white/55 text-white/55 transition hover:border-white hover:text-white"
+                >
+                  →
+                </a>
+              </article>
+            ))
+          }
+        </div>
       </div>
     </section>
 

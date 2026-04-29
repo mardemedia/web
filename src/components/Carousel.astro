@@ -1,7 +1,10 @@
 ---
 interface Props {
   slides: {
-    img: string;
+    img: {
+      mobile: string;
+      desktop: string;
+    };
     title: string;
   }[];
   className?: string;
@@ -13,21 +16,35 @@ const { slides, className } = Astro.props;
   <div class="swiper-wrapper">
     {
       slides.map((slide) => (
-        <div class="swiper-slide">
-          <img
-            src={slide.img}
-            alt={slide.title}
-            class="w-full h-64 object-cover block lg:h-130"
-          />
+        <div class="swiper-slide cursor-grab active:cursor-grabbing relative overflow-hidden">
+          <picture>
+            <source media="(min-width: 1024px)" srcset={slide.img.desktop} />
+
+            <img
+              src={slide.img.mobile}
+              alt={slide.title}
+              class="w-full h-64 object-cover block lg:h-130"
+              loading="lazy"
+            />
+          </picture>
+
+          <div class="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent" />
+
+          <div class="absolute bottom-0 left-0 w-full p-4">
+            <h3 class="text-white text-lg font-semibold">{slide.title}</h3>
+          </div>
         </div>
       ))
     }
   </div>
   <div class="swiper-pagination"></div>
+  <div class="swiper-button-prev !text-white"></div>
+  <div class="swiper-button-next !text-white"></div>
 </div>
 <style is:global>
   @import "swiper/css";
   @import "swiper/css/pagination";
+  @import "swiper/css/navigation";
 
   /* Tailwind resetea display:flex del wrapper, esto lo corrige */
   .mySwiper .swiper-wrapper {
@@ -43,16 +60,20 @@ const { slides, className } = Astro.props;
 
 <script>
   import Swiper from "swiper";
-  import { Pagination } from "swiper/modules";
+  import { Pagination, Navigation } from "swiper/modules";
 
   new Swiper(".mySwiper", {
-    modules: [Pagination],
+    modules: [Pagination, Navigation],
     slidesPerView: 1,
     spaceBetween: 0,
     loop: true,
     pagination: {
       el: ".swiper-pagination",
       clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
     },
   });
 </script>
