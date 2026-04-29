@@ -117,6 +117,8 @@ const { navLinks } = Astro.props;
       $asideMenu.classList.remove("opacity-0");
       $asideMenu.classList.add("opacity-100");
 
+      document.body.style.overflow = "hidden";
+
       $panel.animate(
         [
           {
@@ -167,6 +169,7 @@ const { navLinks } = Astro.props;
 
     setTimeout(() => {
       $asideMenu.style.pointerEvents = "none";
+      document.body.style.overflow = "";
     }, 280);
 
     isOpen = false;
