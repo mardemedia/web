@@ -9,7 +9,7 @@ interface Props {
 const { slides, className } = Astro.props;
 ---
 
-<div class={`swiper mySwiper w-full pb-8 ${className}`}>
+<div class={`swiper mySwiper w-full mx-auto pb-8 ${className}`}>
   <div class="swiper-wrapper">
     {
       slides.map((slide) => (
@@ -17,7 +17,7 @@ const { slides, className } = Astro.props;
           <img
             src={slide.img}
             alt={slide.title}
-            class="w-full h-64 object-cover block"
+            class="w-full h-64 object-cover block lg:h-130"
           />
         </div>
       ))
@@ -25,7 +25,6 @@ const { slides, className } = Astro.props;
   </div>
   <div class="swiper-pagination"></div>
 </div>
-
 <style is:global>
   @import "swiper/css";
   @import "swiper/css/pagination";

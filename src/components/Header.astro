@@ -5,13 +5,63 @@ import BurguerButton from "./BurgerButton.astro";
 import AsideMenu from "./AsideMenu.astro";
 import IsotypeAnchor from "./IsotypeAnchor.astro";
 
+interface navLinks {
+  label: string;
+  description: string;
+  url: string;
+}
+const navLinks: Record<string, navLinks> = {
+  home: {
+    label: "Home",
+    description: "Get back to home page",
+    url: "/home",
+  },
+  services: {
+    label: "Services",
+    description: "Take a dive into our services",
+    url: "#services-section",
+  },
+  packages: {
+    label: "Packages",
+    description: "Personalized packages for you",
+    url: "#packages-section",
+  },
+  contact: {
+    label: "Contact us",
+    description: "Connect with us",
+    url: "#contact-section",
+  },
+};
+
 const homeUrl = getRelativeLocaleUrl(Astro.currentLocale ?? DEFAULT_LANGUAGE);
 ---
 
-<header class="w-full flex justify-between p-5 bg-[#DEF3F4]">
+<header class="w-full flex justify-between items-center p-5 bg-[#DEF3F4]">
   <IsotypeAnchor homeUrl={homeUrl} />
   <BurguerButton />
-  <AsideMenu />
+  <AsideMenu navLinks={navLinks} />
+  <nav class="hidden lg:block">
+    <ul class="flex lg:gap-4">
+      {
+        Object.values(navLinks).map((x) => (
+          <li>
+            <a
+              data-nav-link
+              class="text-third pb-1 px-5 flex justify-between items-center relative
+                 after:content-[''] after:absolute after:left-0 after:bottom-0
+                 after:h-0.5 after:w-full after:bg-secondary
+                 after:scale-x-0 after:origin-left
+                 after:transition-transform after:duration-300
+                 hover:after:scale-x-100"
+              href={`${x.url}`}
+            >
+              {x.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
 </header>
 
 <script>

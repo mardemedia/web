@@ -1,6 +1,8 @@
 ---
 import { getSpanishLabel } from "../../i18n/utils";
 import MainLayout from "../../layouts/MainLayout.astro";
+import { getAllPackages } from "../../services/packages.service";
+import { getAllServices } from "../../services/services.service";
 import Button from "../Button.astro";
 import Carousel from "../Carousel.astro";
 import SectionContainer from "../containers/SectionContainer.astro";
@@ -38,34 +40,37 @@ const slides = [
   <Hero />
   <div class="h-full bg-linear-to-t from-third to-primary">
     <SectionContainer id="intro-section">
-      <h2 class="text-4xl">Where your ideas <br /> come to life</h2>
-      <p>
+      <h2 class="text-4xl lg:text-6xl">Where your ideas <br /> come to life</h2>
+      <p class="lg:text-xl">
         At Mar de Media, We bring your vision to life through digital
         experiences taht deliver results
       </p>
     </SectionContainer>
 
-    <SectionContainer id="services-section">
-      <h2 class="text-3xl">
-        Experience <em class="text-secondary">Mar de Media</em> the <br /> way It's
-        mean to be
-      </h2>
-    </SectionContainer>
-    <Carousel slides={slides} />
-    <Button
-      text="Dive In"
-      className="w-1/2 m-auto mt-2"
-      as="a"
-      href="#contact-section"
-    />
+    <section
+      id="services-section"
+      class="lg:grid lg:grid-cols-2 lg:items-center lg:p-16"
+    >
+      <div class="flex flex-col items-center gap-12">
+        <h2 class="text-3xl lg:text-5xl">
+          Experience <em class="text-secondary">Mar de Media</em> the <br /> way It's
+          mean to be
+        </h2>
+        <Button text="Dive In" as="a" href="#contact-section" />
+      </div>
+      <Carousel slides={services} />
+    </section>
 
-    <SectionContainer id="packages-section">
-      <h2 class="text-3xl">
-        Take your brand to the <span class="text-secondary">next level</span>
-      </h2>
-      <p>See our packages and choose your next step</p>
-    </SectionContainer>
-    <Carousel slides={slides} className="mb-4" />
+    <section class="lg:grid lg:grid-cols-2 lg:items-center lg:p-16">
+      <Carousel slides={packages} className="mb-4" />
+
+      <div id="packages-section" class="text-center p-5 flex flex-col gap-4">
+        <h2 class="text-3xl lg:text-5xl">
+          Take your brand to the <span class="text-secondary">next level</span>
+        </h2>
+        <p class="lg:text-xl">See our packages and choose your next step</p>
+      </div>
+    </section>
 
     <section class="relative" id="contact-section">
       <img
@@ -77,7 +82,7 @@ const slides = [
       <div
         class="absolute inset-0 p-4 flex flex-col justify-center items-center gap-4 text-center"
       >
-        <h2 class="text-3xl md:text-4xl lg:text-5xl">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl md:w-2/3">
           Your journey to <span class="text-secondary">
             something extraordinary
           </span>

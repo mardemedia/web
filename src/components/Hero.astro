@@ -3,14 +3,20 @@ import Waves from "./Waves.astro";
 ---
 
 <section
-  class="flex flex-col justify-between items-center min-h-[55vh] bg-[#DEF3F4]"
+  class="flex flex-col justify-between items-center min-h-[55vh] bg-[#DEF3F4] lg:min-h-[60vh]"
 >
-  <div class="text-center flex flex-col justify-center gap-5 text-third flex-1">
-    <h1 class="font-primary text-4xl">Turn your ideas into reality</h1>
-    <a href="#" class="underline">Start your project -></a>
+  <div
+    class="text-center flex flex-col justify-center md:items-center gap-5 text-third flex-1"
+  >
+    <h1 class="font-primary text-3xl md:text-4xl lg:text-7xl md:w-3/4">
+      Turn your <span class="text-secondary">ideas into reality</span>
+    </h1>
+    <a href="#contact-section" class="underline lg:text-xl"
+      >Start your project -></a
+    >
   </div>
 
-  <div class="w-full bg-linear-to-t from-primary to-[#DEF3F4]">
+  <div class="w-full bg-linear-to-t from-primary to-[#DEF3F4] lg:h-28">
     <Waves />
   </div>
 </section>

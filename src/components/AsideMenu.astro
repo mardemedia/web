@@ -15,30 +15,18 @@ interface navLinks {
   url: string;
 }
 
-const navLinks: Record<string, navLinks> = {
-  services: {
-    label: "Services",
-    description: "Take a dive into our services",
-    url: "#",
-  },
-  packages: {
-    label: "Packages",
-    description: "Personalized packages for you",
-    url: "#",
-  },
-  contact: {
-    label: "Contact us",
-    description: "Connect with us",
-    url: "#",
-  },
-};
+const { navLinks } = Astro.props;
 ---
 
-<aside id="aside-menu" class="fixed inset-0 z-20 pointer-events-none">
+<aside
+  id="aside-menu"
+  class="fixed inset-0 z-20 pointer-events-none opacity-0 transition-opacity duration-300 bg-black/30 backdrop-blur-sm lg:hidden"
+>
+  <!-- PANEL -->
   <div
     id="aside-panel"
-    class="absolute inset-0 bg-[#DEF3F4] flex flex-col"
-    style="transform: translateX(100%); opacity: 0;"
+    class="absolute inset-0 md:inset-y-0 md:right-0 md:left-auto md:w-[420px] bg-[#DEF3F4] flex flex-col will-change-transform"
+    style="transform: translateX(100%); opacity: 0; filter: blur(4px);"
   >
     <header class="flex justify-between text-black py-5 px-5">
       <IsotypeAnchor homeUrl={homeUrl} />
@@ -82,7 +70,6 @@ const navLinks: Record<string, navLinks> = {
               Email:
               <a href="mailto:mardemedia@gmail.com"> mardemedia@gmail.com </a>
             </p>
-
             <p>Puerto Vallarta, Jalisco, México.</p>
           </address>
         </div>
@@ -120,32 +107,36 @@ const navLinks: Record<string, navLinks> = {
   const $asideMenu = $<HTMLElement>("#aside-menu")!;
   const $panel = $("#aside-panel")!;
   const $closeButton = $("#close-button")!;
-  const $navLinks = $$("[data-nav-link]");
+  const $navLinks = $$("[data-nav-link]")!;
 
   let isOpen = false;
 
   const openMenu = () => {
-    $asideMenu.style.pointerEvents = "auto";
+    requestAnimationFrame(() => {
+      $asideMenu.style.pointerEvents = "auto";
+      $asideMenu.classList.remove("opacity-0");
+      $asideMenu.classList.add("opacity-100");
 
-    $panel.animate(
-      [
+      $panel.animate(
+        [
+          {
+            transform: "translateX(100%)",
+            opacity: 0,
+            filter: "blur(4px)",
+          },
+          {
+            transform: "translateX(0%)",
+            opacity: 1,
+            filter: "blur(0px)",
+          },
+        ],
         {
-          transform: "translateX(100%)",
-          opacity: 0,
-          filter: "blur(6px)",
+          duration: 350,
+          easing: "ease-out",
+          fill: "forwards",
         },
-        {
-          transform: "translateX(0%)",
-          opacity: 1,
-          filter: "blur(0px)",
-        },
-      ],
-      {
-        duration: 350,
-        easing: "cubic-bezier(0.22, 1, 0.36, 1)",
-        fill: "forwards",
-      },
-    );
+      );
+    });
 
     isOpen = true;
   };
@@ -161,19 +152,22 @@ const navLinks: Record<string, navLinks> = {
         {
           transform: "translateX(100%)",
           opacity: 0,
-          filter: "blur(6px)",
+          filter: "blur(4px)",
         },
       ],
       {
-        duration: 300,
-        easing: "cubic-bezier(0.4, 0, 1, 1)",
+        duration: 280,
+        easing: "ease-in",
         fill: "forwards",
       },
     );
 
+    $asideMenu.classList.remove("opacity-100");
+    $asideMenu.classList.add("opacity-0");
+
     setTimeout(() => {
       $asideMenu.style.pointerEvents = "none";
-    }, 300);
+    }, 280);
 
     isOpen = false;
   };
@@ -185,6 +179,10 @@ const navLinks: Record<string, navLinks> = {
   window.addEventListener("aside-toggle", toggleMenu);
 
   $closeButton?.addEventListener("click", closeMenu);
+
+  $asideMenu.addEventListener("click", (e) => {
+    if (e.target === $asideMenu) closeMenu();
+  });
 
   $navLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
