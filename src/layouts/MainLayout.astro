@@ -11,6 +11,8 @@ interface Props {
   className?: string;
 }
 const { metaTitle, metaDescription, className }: Props = Astro.props;
+
+const isPreview = import.meta.env.VERCEL_ENV !== "production";
 ---
 
 <html lang={Astro.currentLocale} class="scroll-smooth">
@@ -20,6 +22,11 @@ const { metaTitle, metaDescription, className }: Props = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={metaDescription} />
+    <meta
+      name="robots"
+      content={isPreview ? "noindex, nofollow" : "index, follow"}
+    />
+
     {/* FONTS */}
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
