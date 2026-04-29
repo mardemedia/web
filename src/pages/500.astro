@@ -1,0 +1,34 @@
+---
+import Button from "../components/Button.astro";
+import SecondaryLayout from "../layouts/SecondaryLayout.astro";
+
+const year = new Date().getFullYear();
+---
+
+<SecondaryLayout
+  metaTitle="500 | Server Error"
+  metaDescription="Something went wrong on our side."
+>
+  <section
+    class="min-h-screen flex flex-col items-center justify-center text-center bg-linear-to-t from-third to-primary px-6 gap-12"
+  >
+    <div>
+      <h1 class="text-6xl md:text-7xl font-bold mb-2">500</h1>
+
+      <h2 class="text-3xl md:text-5xl mb-4 opacity-80">
+        Internal Server Error
+      </h2>
+
+      <p class="max-w-xl text-lg opacity-80 mb-8">
+        Oops… something broke on our side. We’re already working to fix it.
+        Please try again in a moment.
+      </p>
+
+      <Button text="Go back Home" as="a" href="/" />
+    </div>
+
+    <footer class="flex justify-center items-center text-white">
+      &#169; Mar de Media {year}. All Rights Reserved
+    </footer>
+  </section>
+</SecondaryLayout>
