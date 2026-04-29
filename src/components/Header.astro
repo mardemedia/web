@@ -36,7 +36,10 @@ const navLinks: Record<string, navLinks> = {
 const homeUrl = getRelativeLocaleUrl(Astro.currentLocale ?? DEFAULT_LANGUAGE);
 ---
 
-<header class="w-full flex justify-between items-center p-5 bg-[#DEF3F4]">
+<header
+  id="main-header"
+  class="sticky top-0 z-50 w-full flex justify-between items-center p-5 md:p-2 bg-[#DEF3F4] transition-shadow duration-300"
+>
   <IsotypeAnchor homeUrl={homeUrl} />
   <BurguerButton />
   <AsideMenu navLinks={navLinks} />
@@ -70,5 +73,24 @@ const homeUrl = getRelativeLocaleUrl(Astro.currentLocale ?? DEFAULT_LANGUAGE);
   const $burguerButton = $<HTMLButtonElement>("#burger-button")!;
   $burguerButton.addEventListener("click", () => {
     window.dispatchEvent(new Event("aside-toggle"));
+  });
+
+  const header = $("#main-header");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 10) {
+      header.classList.add(
+        "shadow-[0_6px_16px_rgba(0,0,0,0.06)]",
+        "bg-[#DEF3F4]/90",
+        "backdrop-blur-md",
+      );
+    } else {
+      header.classList.remove(
+        "shadow-[0_6px_16px_rgba(0,0,0,0.06)]",
+        "bg-[#DEF3F4]/90",
+        "backdrop-blur-md",
+      );
+      header.classList.add("bg-[#DEF3F4]");
+    }
   });
 </script>
