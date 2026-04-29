@@ -1,26 +1,66 @@
-[
-  {
-    "img": "https://placehold.co/800x800/1E3A8A/ffffff?text=Basic+Package",
-    "tag": "Starter",
-    "title": "Basic Package",
-    "description": "Perfect for getting started with essential features.",
-    "price": "$99",
-    "features": ["1 Project", "Basic Support", "Standard Assets"]
-  },
-  {
-    "img": "https://placehold.co/800x800/065F46/ffffff?text=Pro+Package",
-    "tag": "Popular",
-    "title": "Pro Package",
-    "description": "Advanced tools for growing your business.",
-    "price": "$249",
-    "features": ["5 Projects", "Priority Support", "Premium Assets"]
-  },
-  {
-    "img": "https://placehold.co/800x800/7C2D12/ffffff?text=Elite+Package",
-    "tag": "Premium",
-    "title": "Elite Package",
-    "description": "All-inclusive solution for professionals.",
-    "price": "$499",
-    "features": ["Unlimited Projects", "24/7 Support", "Exclusive Assets"]
-  }
-]
+{
+  "en": [
+    {
+      "img": {
+        "mobile": "/stock/location-shoot-mobile.webp",
+        "desktop": "/stock/location-shoot-desktop.webp"
+      },
+      "tag": "Included",
+      "title": "Location Photo Session",
+      "description": "Show your business in its best light with a professional on-location photoshoot designed to capture your space, team and brand essence. Included with your web development to create a cohesive and high-impact online presence.",
+      "features": [
+        "On-location shooting",
+        "Brand-focused visuals",
+        "Team & space coverage",
+        "Optimized for web use"
+      ]
+    },
+    {
+      "img": {
+        "mobile": "/stock/product-shoot-mobile.webp",
+        "desktop": "/stock/product-shoot-desktop.webp"
+      },
+      "tag": "Included",
+      "title": "Product Photo Session",
+      "description": "Highlight your products with high-quality visuals that attract attention and drive sales. We create clean, professional images ready to elevate your website and marketing materials. Included with your web development.",
+      "features": [
+        "Product-focused photography",
+        "Clean and professional styling",
+        "High-resolution assets",
+        "Ready for web & marketing"
+      ]
+    }
+  ],
+  "es": [
+    {
+      "img": {
+        "mobile": "/stock/location-shoot-mobile.webp",
+        "desktop": "/stock/location-shoot-desktop.webp"
+      },
+      "tag": "Incluido",
+      "title": "Sesión de Fotos en Locación",
+      "description": "Muestra tu negocio en su mejor versión con una sesión fotográfica profesional en locación que captura tu espacio, tu equipo y la esencia de tu marca. Incluido con el desarrollo web para lograr una presencia digital coherente y de alto impacto.",
+      "features": [
+        "Sesión en locación",
+        "Enfoque en identidad de marca",
+        "Captura de equipo y espacio",
+        "Optimizado para web"
+      ]
+    },
+    {
+      "img": {
+        "mobile": "/stock/product-shoot-mobile.webp",
+        "desktop": "/stock/product-shoot-desktop.webp"
+      },
+      "tag": "Incluido",
+      "title": "Sesión de Fotos de Producto",
+      "description": "Destaca tus productos con imágenes de alta calidad que captan la atención y aumentan tus ventas. Creamos contenido visual profesional listo para potenciar tu sitio web y materiales de marketing. Incluido con el desarrollo web.",
+      "features": [
+        "Fotografía de producto",
+        "Estilo limpio y profesional",
+        "Imágenes en alta resolución",
+        "Listo para web y marketing"
+      ]
+    }
+  ]
+}

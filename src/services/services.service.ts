@@ -1,3 +1,4 @@
 import services from "../data/services.json";
 
-export const getAllServices = async () => services;
+//TODO: Make this dynamic
+export const getAllServices = async (lang = "en") => services[lang];

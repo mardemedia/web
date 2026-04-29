@@ -1,23 +1,40 @@
-[
-  {
-    "img": "https://placehold.co/800x500/4F46E5/ffffff?text=Slide+1",
-    "tag": "Nuevo",
-    "title": "Producto Premium",
-    "description": "Descripción breve",
-    "price": "$299"
-  },
-  {
-    "img": "https://placehold.co/800x500/0F6E56/ffffff?text=Slide+2",
-    "tag": "Oferta",
-    "title": "Artículo Especial",
-    "description": "Descripción breve",
-    "price": "$149"
-  },
-  {
-    "img": "https://placehold.co/800x500/993C1D/ffffff?text=Slide+3",
-    "tag": "Popular",
-    "title": "Colección Exclusiva",
-    "description": "Descripción breve",
-    "price": "$499"
-  }
-]
+{
+  "en": [
+    {
+      "img": {
+        "mobile": "/stock/web-service-mobile.webp",
+        "desktop": "/stock/web-service-desktop.webp"
+      },
+      "tag": "hot",
+      "title": "Web development",
+      "description": "We build fast, scalable and visually stunning websites designed to convert visitors into customers and grow your business."
+    },
+    {
+      "img": {
+        "mobile": "/stock/social-service-mobile.webp",
+        "desktop": "/stock/social-service-desktop.webp"
+      },
+      "tag": "hot",
+      "title": "Social media",
+      "description": "We create strategic content and campaigns that boost your visibility, engage your audience and turn followers into loyal clients."
+    },
+    {
+      "img": {
+        "mobile": "/stock/branding-service-mobile.webp",
+        "desktop": "/stock/branding-service-desktop.webp"
+      },
+      "tag": "hot",
+      "title": "Branding & naming",
+      "description": "We craft memorable brands with strong identities and names that connect emotionally and stand out in competitive markets."
+    },
+    {
+      "img": {
+        "mobile": "/stock/multimedia-service-mobile.webp",
+        "desktop": "/stock/multimedia-service-desktop.webp"
+      },
+      "tag": "hot",
+      "title": "Multimedia",
+      "description": "We produce high-quality visuals, videos and digital assets that elevate your brand and communicate your message with impact."
+    }
+  ]
+}
