@@ -7,7 +7,7 @@ const Tag = as;
 <Tag
   {...as === "a" ? { href } : {}}
   {...props}
-  class={`group relative inline-flex h-12 w-[320px] cursor-pointer overflow-hidden bg-transparent transition-transform duration-300 hover:scale-[1.03] ${className}`}
+  class={`group relative inline-flex h-12 w-[320px] cursor-pointer overflow-hidden bg-transparent transition-transform duration-300 hover:scale-[1.03] ${className && className}`}
 >
   <span
     class="absolute top-0 left-0 h-px w-full origin-left scale-x-100 bg-white transition-transform duration-500 group-hover:scale-x-0"
