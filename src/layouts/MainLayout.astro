@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import BubbleContainer from "../components/containers/BubbleContainer.astro";
 import UpButton from "../components/UpButton.astro";
+import { getLangOrFallback, type lang } from "../i18n/utils";
 
 interface Props {
   metaTitle: string;
@@ -13,9 +14,10 @@ interface Props {
 const { metaTitle, metaDescription, className }: Props = Astro.props;
 
 const isPreview = import.meta.env.VERCEL_ENV !== "production";
+const locale: lang = getLangOrFallback(Astro.currentLocale);
 ---
 
-<html lang={Astro.currentLocale} class="scroll-smooth">
+<html lang={locale} class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -39,7 +41,7 @@ const isPreview = import.meta.env.VERCEL_ENV !== "production";
     class={`min-h-screen relative flex flex-col justify-between text-white ${className}`}
   >
     <BubbleContainer />
-    <Header />
+    <Header lang={locale} />
     <div class="flex-1">
       <slot />
     </div>

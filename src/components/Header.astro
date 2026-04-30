@@ -89,7 +89,7 @@ const homeUrl = getRelativeLocaleUrl(Astro.currentLocale ?? DEFAULT_LANGUAGE);
     window.dispatchEvent(new Event("aside-toggle"));
   });
 
-  const header = $("#main-header");
+  const header = $("#main-header")!;
 
   window.addEventListener("scroll", () => {
     if (window.scrollY > 10) {

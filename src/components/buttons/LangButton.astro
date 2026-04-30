@@ -10,7 +10,9 @@ interface Props {
 const { lang, className }: Props = Astro.props;
 
 const nextLang = lang === "es" ? "en" : "es";
-const href = getRelativeLocaleUrl(nextLang);
+
+const pathWithoutLocale = Astro.url.pathname.replace(/^\/(en|es)/, "") || "/";
+const href = getRelativeLocaleUrl(nextLang, pathWithoutLocale);
 ---
 
 <a href={href} class={`uppercase font-bold  ${className && className}`}>
