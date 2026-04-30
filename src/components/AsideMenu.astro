@@ -1,21 +1,21 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { DEFAULT_LANGUAGE } from "../i18n/utils";
+import { DEFAULT_LANGUAGE, type lang } from "../i18n/utils";
 import IsotypeAnchor from "./IsotypeAnchor.astro";
 import CrossButton from "./CrossButton.astro";
 import RightArrow from "./icons/RightArrow.astro";
 import FBIcon from "./icons/FBIcon.astro";
 import IGIcon from "./icons/IGIcon.astro";
+import type { Route } from "../utils/routes";
+import LangButton from "./buttons/LangButton.astro";
 
-const homeUrl = getRelativeLocaleUrl(Astro.currentLocale ?? DEFAULT_LANGUAGE);
-
-interface navLinks {
-  label: string;
-  description: string;
-  url: string;
+interface Props {
+  navLinks: Route[];
+  lang: lang;
 }
 
-const { navLinks } = Astro.props;
+const homeUrl = getRelativeLocaleUrl(Astro.currentLocale ?? DEFAULT_LANGUAGE);
+const { navLinks, lang }: Props = Astro.props;
 ---
 
 <aside
@@ -46,9 +46,9 @@ const { navLinks } = Astro.props;
                     href={`${x.url}`}
                   >
                     <div class="flex flex-col uppercase gap-1">
-                      {x.label}
+                      {x.label[lang]}
                       <span class="normal-case opacity-70">
-                        {x.description}
+                        {x.description[lang]}
                       </span>
                     </div>
                     <RightArrow class="text-third" />
@@ -80,7 +80,7 @@ const { navLinks } = Astro.props;
           <div class="grow border-t border-third"></div>
         </div>
 
-        <footer class="p-5 text-third">
+        <footer class="p-5 text-third relative">
           <nav aria-label="Social media">
             <ul class="flex gap-4 items-center justify-center">
               <li>
@@ -95,6 +95,11 @@ const { navLinks } = Astro.props;
               </li>
             </ul>
           </nav>
+
+          <LangButton
+            lang={lang}
+            className="absolute bottom-5 right-5 font-light"
+          />
         </footer>
       </div>
     </section>

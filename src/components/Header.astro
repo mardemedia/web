@@ -5,37 +5,10 @@ import BurguerButton from "./buttons/BurgerButton.astro";
 import AsideMenu from "./AsideMenu.astro";
 import IsotypeAnchor from "./IsotypeAnchor.astro";
 import LangButton from "./buttons/LangButton.astro";
-
+import { routes } from "../utils/routes";
 interface Props {
   lang: lang;
 }
-interface navLinks {
-  label: string;
-  description: string;
-  url: string;
-}
-const navLinks: Record<string, navLinks> = {
-  home: {
-    label: "Home",
-    description: "Get back to home page",
-    url: "/",
-  },
-  services: {
-    label: "Services",
-    description: "Take a dive into our services",
-    url: "#services-section",
-  },
-  packages: {
-    label: "Packages",
-    description: "Personalized packages for you",
-    url: "#packages-section",
-  },
-  contact: {
-    label: "Contact us",
-    description: "Connect with us",
-    url: "#contact-section",
-  },
-};
 
 const { lang } = Astro.props;
 const homeUrl = getRelativeLocaleUrl(Astro.currentLocale ?? DEFAULT_LANGUAGE);
@@ -47,7 +20,7 @@ const homeUrl = getRelativeLocaleUrl(Astro.currentLocale ?? DEFAULT_LANGUAGE);
 >
   <IsotypeAnchor homeUrl={homeUrl} />
   <BurguerButton />
-  <AsideMenu navLinks={navLinks} />
+  <AsideMenu navLinks={routes} lang={lang} />
   <nav class="hidden lg:block">
     <ul class="flex gap-2">
       <LangButton
@@ -60,7 +33,7 @@ const homeUrl = getRelativeLocaleUrl(Astro.currentLocale ?? DEFAULT_LANGUAGE);
                  hover:after:scale-x-100"
       />
       {
-        Object.values(navLinks).map((x) => (
+        Object.values(routes).map((x) => (
           <li>
             <a
               data-nav-link
@@ -72,7 +45,7 @@ const homeUrl = getRelativeLocaleUrl(Astro.currentLocale ?? DEFAULT_LANGUAGE);
                  hover:after:scale-x-100"
               href={`${x.url}`}
             >
-              {x.label}
+              {x.label[lang]}
             </a>
           </li>
         ))
