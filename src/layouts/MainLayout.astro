@@ -5,6 +5,7 @@ import Footer from "../components/Footer.astro";
 import BubbleContainer from "../components/containers/BubbleContainer.astro";
 import UpButton from "../components/UpButton.astro";
 import { getLangOrFallback, type lang } from "../i18n/utils";
+import SEOLayout from "./SEOLayout.astro";
 
 interface Props {
   metaTitle: string;
@@ -17,35 +18,18 @@ const isPreview = import.meta.env.VERCEL_ENV !== "production";
 const locale: lang = getLangOrFallback(Astro.currentLocale);
 ---
 
-<html lang={locale} class="scroll-smooth">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={metaDescription} />
-    <meta
-      name="robots"
-      content={isPreview ? "noindex, nofollow" : "index, follow"}
-    />
-
-    {/* FONTS */}
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-    <script src="./../components/custom-elements/BubbleSvg"></script>
-    <title>{metaTitle}</title>
-  </head>
-  <body
-    class={`min-h-screen relative flex flex-col justify-between text-white ${className}`}
-  >
-    <BubbleContainer />
-    <Header lang={locale} />
-    <div class="flex-1">
-      <slot />
-    </div>
-    <Footer lang={locale} />
-    <UpButton />
-  </body>
-</html>
+<SEOLayout
+  metaDescription={metaDescription}
+  metaTitle={metaTitle}
+  isPreview={isPreview}
+  locale={locale}
+  className={className}
+>
+  <BubbleContainer />
+  <Header lang={locale} />
+  <div class="flex-1">
+    <slot />
+  </div>
+  <Footer lang={locale} />
+  <UpButton />
+</SEOLayout>

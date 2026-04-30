@@ -1,0 +1,42 @@
+---
+import "./../styles/global.css";
+import { type lang } from "../i18n/utils";
+
+interface Props {
+  metaTitle: string;
+  metaDescription: string;
+  className?: string;
+  isPreview: boolean;
+  locale: lang;
+}
+const { metaTitle, metaDescription, isPreview, locale, className }: Props =
+  Astro.props;
+---
+
+<html lang={locale} class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?2" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={metaDescription} />
+    <meta
+      name="robots"
+      content={isPreview ? "noindex, nofollow" : "index, follow"}
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="./../components/custom-elements/BubbleSvg"></script>
+
+    <title>{metaTitle}</title>
+  </head>
+
+  <body
+    class={`min-h-screen relative flex flex-col justify-between text-white ${className}`}
+  >
+    <slot />
+  </body>
+</html>
