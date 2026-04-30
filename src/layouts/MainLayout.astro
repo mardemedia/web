@@ -45,7 +45,7 @@ const locale: lang = getLangOrFallback(Astro.currentLocale);
     <div class="flex-1">
       <slot />
     </div>
-    <Footer />
+    <Footer lang={locale} />
     <UpButton />
   </body>
 </html>
