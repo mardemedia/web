@@ -1,5 +1,14 @@
 ---
 import Waves from "./Waves.astro";
+import { getEnglishLabel, getSpanishLabel, type lang } from "../i18n/utils";
+
+interface Props {
+  lang: lang;
+}
+
+const { lang }: Props = Astro.props;
+
+const t = lang === "es" ? getSpanishLabel : getEnglishLabel;
 ---
 
 <section
@@ -9,11 +18,24 @@ import Waves from "./Waves.astro";
     class="text-center flex flex-col justify-center md:items-center gap-5 text-third flex-1"
   >
     <h1 class="font-primary text-3xl md:text-4xl lg:text-7xl md:w-3/4">
-      Turn your <span class="text-secondary">ideas into reality</span>
+      {t("hero.title.start")}
+      <span class="text-secondary">
+        {t("hero.title.highlight")}
+      </span>
     </h1>
-    <a href="#contact-section" class="underline lg:text-xl"
-      >Start your project -></a
+
+    <a
+      href="#contact-section"
+      data-nav-link
+      class="text-third pb-1 px-5 flex justify-between items-center relative
+                 after:content-[''] after:absolute after:left-0 after:bottom-0
+                 after:h-0.5 after:w-full after:bg-secondary
+                 after:scale-x-0 after:origin-left
+                 after:transition-transform after:duration-300
+                 hover:after:scale-x-100 text-xl"
     >
+      {t("hero.cta")}
+    </a>
   </div>
 
   <div class="w-full bg-linear-to-t from-primary to-[#DEF3F4] lg:h-28">

@@ -1,0 +1,8 @@
+---
+import HomePage from "../../components/pages/HomePage.astro";
+import { getLangOrFallback, type lang } from "../../i18n/utils";
+
+const locale: lang = getLangOrFallback(Astro.currentLocale);
+---
+
+<HomePage lang={locale} />

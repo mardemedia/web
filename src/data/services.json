@@ -36,5 +36,43 @@
       "title": "Multimedia",
       "description": "We produce high-quality visuals, videos and digital assets that elevate your brand and communicate your message with impact."
     }
+  ],
+  "es": [
+    {
+      "img": {
+        "mobile": "/stock/web-service-mobile.webp",
+        "desktop": "/stock/web-service-desktop.webp"
+      },
+      "tag": "hot",
+      "title": "Desarrollo web",
+      "description": "Construimos sitios web rápidos, escalables y visualmente impactantes, diseñados para convertir visitantes en clientes y hacer crecer tu negocio."
+    },
+    {
+      "img": {
+        "mobile": "/stock/social-service-mobile.webp",
+        "desktop": "/stock/social-service-desktop.webp"
+      },
+      "tag": "hot",
+      "title": "Redes sociales",
+      "description": "Creamos contenido estratégico y campañas que aumentan tu visibilidad, conectan con tu audiencia y convierten seguidores en clientes leales."
+    },
+    {
+      "img": {
+        "mobile": "/stock/branding-service-mobile.webp",
+        "desktop": "/stock/branding-service-desktop.webp"
+      },
+      "tag": "hot",
+      "title": "Branding y naming",
+      "description": "Creamos marcas memorables con identidades sólidas y nombres que conectan emocionalmente y destacan en mercados competitivos."
+    },
+    {
+      "img": {
+        "mobile": "/stock/multimedia-service-mobile.webp",
+        "desktop": "/stock/multimedia-service-desktop.webp"
+      },
+      "tag": "hot",
+      "title": "Multimedia",
+      "description": "Producimos contenido visual, videos y recursos digitales de alta calidad que elevan tu marca y comunican tu mensaje con impacto."
+    }
   ]
 }

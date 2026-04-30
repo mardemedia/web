@@ -1,4 +1,4 @@
 import services from "../data/services.json";
+import type { lang } from "../i18n/utils";
 
-//TODO: Make this dynamic
-export const getAllServices = async (lang = "en") => services[lang];
+export const getAllServices = async (lang: lang) => services[lang];
