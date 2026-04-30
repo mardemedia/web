@@ -64,7 +64,9 @@ const { navLinks, lang }: Props = Astro.props;
 
       <div class="mt-auto">
         <div class="p-5 text-third">
-          <span class="text-xl mb-4">Let's Connect</span>
+          <span class="text-xl mb-4"
+            >{lang === "es" ? "Conectemos" : "Let's Connect"}</span
+          >
           <address>
             <p>
               Email:
@@ -76,7 +78,9 @@ const { navLinks, lang }: Props = Astro.props;
 
         <div class="flex items-center mx-5">
           <div class="grow border-t border-third"></div>
-          <span class="mx-4 text-third opacity-70">Follow Us</span>
+          <span class="mx-4 text-third opacity-70"
+            >{lang === "es" ? "Síguenos" : "Follow Us"}</span
+          >
           <div class="grow border-t border-third"></div>
         </div>
 
