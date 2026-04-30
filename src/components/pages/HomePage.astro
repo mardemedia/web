@@ -15,7 +15,6 @@ interface Props {
 const { lang }: Props = Astro.props;
 
 const t = lang === "es" ? getSpanishLabel : getEnglishLabel;
-console.log(lang);
 const services = await getAllServices(lang);
 const packages = await getAllPackages(lang);
 ---
