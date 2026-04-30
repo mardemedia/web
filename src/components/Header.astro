@@ -1,10 +1,14 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { DEFAULT_LANGUAGE } from "../i18n/utils";
-import BurguerButton from "./BurgerButton.astro";
+import { DEFAULT_LANGUAGE, type lang } from "../i18n/utils";
+import BurguerButton from "./buttons/BurgerButton.astro";
 import AsideMenu from "./AsideMenu.astro";
 import IsotypeAnchor from "./IsotypeAnchor.astro";
+import LangButton from "./buttons/LangButton.astro";
 
+interface Props {
+  lang: lang;
+}
 interface navLinks {
   label: string;
   description: string;
@@ -33,6 +37,7 @@ const navLinks: Record<string, navLinks> = {
   },
 };
 
+const { lang } = Astro.props;
 const homeUrl = getRelativeLocaleUrl(Astro.currentLocale ?? DEFAULT_LANGUAGE);
 ---
 
@@ -44,13 +49,22 @@ const homeUrl = getRelativeLocaleUrl(Astro.currentLocale ?? DEFAULT_LANGUAGE);
   <BurguerButton />
   <AsideMenu navLinks={navLinks} />
   <nav class="hidden lg:block">
-    <ul class="flex lg:gap-4">
+    <ul class="flex gap-2">
+      <LangButton
+        lang={lang}
+        className="text-third pb-1 px-2 flex justify-between items-center relative
+                 after:content-[''] after:absolute after:left-0 after:bottom-0
+                 after:h-0.5 after:w-full after:bg-secondary
+                 after:scale-x-0 after:origin-left
+                 after:transition-transform after:duration-300
+                 hover:after:scale-x-100"
+      />
       {
         Object.values(navLinks).map((x) => (
           <li>
             <a
               data-nav-link
-              class="text-third pb-1 px-5 flex justify-between items-center relative
+              class="text-third pb-1 px-2 flex justify-between items-center relative
                  after:content-[''] after:absolute after:left-0 after:bottom-0
                  after:h-0.5 after:w-full after:bg-secondary
                  after:scale-x-0 after:origin-left

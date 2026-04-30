@@ -1,0 +1,18 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import type { lang } from "../../i18n/utils";
+
+interface Props {
+  lang: lang;
+  className?: string;
+}
+
+const { lang, className }: Props = Astro.props;
+
+const nextLang = lang === "es" ? "en" : "es";
+const href = getRelativeLocaleUrl(nextLang);
+---
+
+<a href={href} class={`uppercase font-bold  ${className && className}`}>
+  {nextLang}
+</a>
