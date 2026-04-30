@@ -37,28 +37,40 @@ const packages = await getAllPackages(lang);
 
     <section
       id="services-section"
-      class="px-5 lg:grid lg:grid-cols-2 lg:items-center lg:p-16 max-w-7xl mx-auto xl:max-w-[100rem]"
+      class="px-5 flex flex-col gap-4 lg:gap-0 items-center lg:grid lg:grid-cols-2 lg:items-center lg:p-16 max-w-7xl mx-auto xl:max-w-400"
     >
-      <div class="flex flex-col items-start gap-12">
-        <h2 class="text-3xl lg:text-5xl text-start">
+      <div class="flex flex-col items-center md:items-start gap-12 py-2">
+        <h2 class="text-3xl lg:text-5xl text-center xl:text-start">
           {t("services.title").split("\n")[0]}
           <em class="text-secondary"> {t("services.title").split("\n")[1]}</em>
           <br />
           {t("services.title").split("\n")[2]}
         </h2>
 
-        <Button text={t("services.cta")} as="a" href="#contact-section" />
+        <Button
+          text={t("services.cta")}
+          as="a"
+          href="#contact-section"
+          className="hidden! lg:inline-flex! lg:mx-auto xl:mx-0"
+        />
       </div>
 
       <Carousel slides={services} />
+
+      <Button
+        text={t("services.cta")}
+        as="a"
+        href="#contact-section"
+        className="lg:hidden"
+      />
     </section>
 
     <section
       id="packages-section"
-      class="bg-transparent px-5 py-20 lg:px-16 lg:py-28 max-w-7xl mx-auto xl:max-w-[100rem]"
+      class="bg-transparent px-5 py-10 md:py-20 lg:px-16 lg:py-28 max-w-7xl mx-auto xl:max-w-400"
     >
       <div class="mx-auto">
-        <div class="mb-24 lg:mb-10">
+        <div class="lg:mb-10">
           <p
             class="mb-2 text-xs font-medium uppercase tracking-[0.35em] text-white italic"
           >
@@ -90,23 +102,33 @@ const packages = await getAllPackages(lang);
                   </h3>
                 </div>
 
-                <p class="max-w-md text-base leading-relaxed text-white lg:text-lg">
+                <p class=" text-base leading-relaxed text-white lg:text-lg">
                   {item.description}
                 </p>
 
-                <ul class="space-y-2 text-sm leading-relaxed text-white/75 lg:text-base">
-                  {item.features.map((feature) => (
-                    <li>{feature}</li>
-                  ))}
-                </ul>
+                <div>
+                  <h4 class="lg:hidden text-center pb-4">Incluye</h4>
+                  <ul class="flex flex-wrap gap-x-4 justify-center lg:block space-y-2 text-sm leading-relaxed text-white/75 lg:text-base">
+                    {item.features.map((feature) => (
+                      <li>{feature}</li>
+                    ))}
+                  </ul>
+                </div>
 
                 <a
                   href="#contact-section"
                   aria-label={`${t("packages.viewLabel")} ${item.title}`}
-                  class="flex size-12 items-center justify-center border border-white/55 text-white/55 transition hover:border-white hover:text-white"
+                  class="size-12 items-center justify-center border border-white/55 text-white/55 transition hover:border-white hover:text-white hidden lg:flex"
                 >
                   →
                 </a>
+
+                <Button
+                  text={t("services.cta")}
+                  as="a"
+                  href="#contact-section"
+                  className="mx-auto lg:mx-0 lg:hidden"
+                />
               </article>
             ))
           }
@@ -132,7 +154,7 @@ const packages = await getAllPackages(lang);
           {lang === "es" ? " comienza aquí." : " starts here."}
         </h2>
 
-        <Button text={t("contact.cta")} className="w-2/3 md:w-auto" />
+        <Button text={t("contact.cta")} className="w-2/3 lg:w-auto" />
       </div>
     </section>
   </div>
