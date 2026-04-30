@@ -27,9 +27,7 @@ const { slides, className } = Astro.props;
               loading="lazy"
             />
           </picture>
-
           <div class="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent" />
-
           <div class="absolute bottom-0 left-0 w-full p-4">
             <h3 class="text-white text-lg font-semibold">{slide.title}</h3>
           </div>
@@ -37,9 +35,8 @@ const { slides, className } = Astro.props;
       ))
     }
   </div>
-  <div class="swiper-pagination"></div>
-  <div class="swiper-button-prev !text-white"></div>
-  <div class="swiper-button-next !text-white"></div>
+  <div class="swiper-button-prev text-white!"></div>
+  <div class="swiper-button-next text-white!"></div>
 </div>
 <style is:global>
   @import "swiper/css";
@@ -64,9 +61,20 @@ const { slides, className } = Astro.props;
 
   new Swiper(".mySwiper", {
     modules: [Pagination, Navigation],
+    loop: false,
+    spaceBetween: 16,
+
     slidesPerView: 1,
-    spaceBetween: 0,
-    loop: true,
+
+    breakpoints: {
+      640: {
+        slidesPerView: 2,
+      },
+      1440: {
+        slidesPerView: 3,
+      },
+    },
+
     pagination: {
       el: ".swiper-pagination",
       clickable: true,

@@ -37,7 +37,10 @@ const packages = await getAllPackages(lang);
 
     <section
       id="services-section"
-      class="px-5 flex flex-col gap-4 lg:gap-0 items-center lg:grid lg:grid-cols-2 lg:items-center lg:p-16 max-w-7xl mx-auto xl:max-w-400"
+      class="px-5 flex flex-col gap-4 items-center
+         xl:grid xl:grid-cols-[0.7fr_1.3fr] xl:items-center
+         xl:gap-x-8 lg:p-16
+         max-w-7xl mx-auto xl:max-w-400"
     >
       <div class="flex flex-col items-center md:items-start gap-12 py-2">
         <h2 class="text-3xl lg:text-5xl text-center xl:text-start">
@@ -51,7 +54,7 @@ const packages = await getAllPackages(lang);
           text={t("services.cta")}
           as="a"
           href="#contact-section"
-          className="hidden! lg:inline-flex! lg:mx-auto xl:mx-0"
+          className="hidden! xl:inline-flex! lg:mx-auto xl:mx-0"
         />
       </div>
 
@@ -61,13 +64,13 @@ const packages = await getAllPackages(lang);
         text={t("services.cta")}
         as="a"
         href="#contact-section"
-        className="lg:hidden"
+        className="xl:hidden"
       />
     </section>
 
     <section
       id="packages-section"
-      class="bg-transparent px-5 py-10 md:py-20 lg:px-16 lg:py-28 max-w-7xl mx-auto xl:max-w-400"
+      class="bg-transparent px-5 py-10 md:py-20 lg:px-16 lg:pb-28 lg:pt-0 max-w-7xl mx-auto xl:max-w-400"
     >
       <div class="mx-auto">
         <div class="lg:mb-10">
@@ -151,10 +154,16 @@ const packages = await getAllPackages(lang);
           <span class="text-secondary">
             {t("contact.highlight")}
           </span>
+          <br />
           {lang === "es" ? " comienza aquí." : " starts here."}
         </h2>
 
-        <Button text={t("contact.cta")} className="w-2/3 lg:w-auto" />
+        <Button
+          as="a"
+          text={t("contact.cta")}
+          className="w-2/3"
+          href="mailto:mardemedia@gmail.com"
+        />
       </div>
     </section>
   </div>
