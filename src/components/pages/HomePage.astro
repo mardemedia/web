@@ -87,7 +87,7 @@ const packages = await getAllPackages(lang);
         <div class="divide-y divide-primary/15">
           {
             packages.map((item, index) => (
-              <article class="grid gap-8 py-12 lg:grid-cols-[90px_260px_1fr_280px_48px] lg:items-start lg:gap-8">
+              <article class="grid gap-8 py-12 lg:grid-cols-[90px_260px_auto] xl:grid-cols-[90px_260px_1fr_280px_48px] lg:items-start lg:gap-8">
                 <div class="text-5xl leading-none text-white/15 lg:text-6xl">
                   {String(index + 1).padStart(2, "0")}
                 </div>
@@ -106,7 +106,7 @@ const packages = await getAllPackages(lang);
                   {item.description}
                 </p>
 
-                <div>
+                <div class="lg:hidden xl:block">
                   <h4 class="lg:hidden text-center pb-4">Incluye</h4>
                   <ul class="flex flex-wrap gap-x-4 justify-center lg:block space-y-2 text-sm leading-relaxed text-white/75 lg:text-base">
                     {item.features.map((feature) => (
@@ -118,7 +118,7 @@ const packages = await getAllPackages(lang);
                 <a
                   href="#contact-section"
                   aria-label={`${t("packages.viewLabel")} ${item.title}`}
-                  class="size-12 items-center justify-center border border-white/55 text-white/55 transition hover:border-white hover:text-white hidden lg:flex"
+                  class="size-12 items-center justify-center border border-white/55 text-white/55 transition hover:border-white hover:text-white hidden xl:flex xl:self-center"
                 >
                   →
                 </a>
@@ -127,7 +127,7 @@ const packages = await getAllPackages(lang);
                   text={t("services.cta")}
                   as="a"
                   href="#contact-section"
-                  className="mx-auto lg:mx-0 lg:hidden"
+                  className="mx-auto xl:mx-0 xl:hidden col-span-full self-center"
                 />
               </article>
             ))
