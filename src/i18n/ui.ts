@@ -2,9 +2,9 @@ import type { lang } from "./utils";
 
 const LABELS: Record<lang, Record<string, string>> = {
   en: {
-    "meta.title": "Mar de Media | Multimedia Production & Software Development",
+    "meta.title": "Mar de Media | Digital Marketing Services",
     "meta.description":
-      "Web development, custom software and multimedia production services in Puerto Vallarta, Jalisco. Complete digital solutions for businesses.",
+      "Web development, custom software and multimedia services in Puerto Vallarta, Jalisco. Complete digital solutions for businesses.",
 
     "hero.title.start": "Turn your ",
     "hero.title.highlight": "ideas into reality",
@@ -28,10 +28,9 @@ const LABELS: Record<lang, Record<string, string>> = {
   },
 
   es: {
-    "meta.title":
-      "Mar de Media | Producción multimedia y Desarrollo de Software",
+    "meta.title": "Mar de Media | Servicios de Marketing digital",
     "meta.description":
-      "Servicios de desarrollo web, software a medida y producción multimedia en Puerto Vallarta, Jalisco. Soluciones digitales completas para empresas.",
+      "Servicios de desarrollo web, software a medida y multimedia, en Puerto Vallarta, Jalisco. Soluciones digitales completas para empresas.",
 
     "hero.title.start": "Convierte tus ",
     "hero.title.highlight": "ideas en realidad",
