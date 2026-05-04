@@ -1,7 +1,4 @@
 ---
-import LogoEs from "../../public/imagotipo-mar-de-media-es.svg?raw";
-import LogoEn from "../../public/imagotipo-mar-de-media-en.svg?raw";
-
 import type { lang } from "../i18n/utils";
 
 interface Props {
@@ -9,11 +6,15 @@ interface Props {
   lang: lang;
 }
 const { homeUrl, lang }: Props = Astro.props;
-const logo = lang === "es" ? LogoEs : LogoEn;
 ---
 
-<a
-  href={homeUrl}
-  class="block w-12 md:w-64 [&>svg]:w-full [&>svg]:h-auto"
-  set:html={logo}
-/>
+<a href={homeUrl}>
+  <picture>
+    <source
+      media="(min-width: 768px)"
+      srcset={`/imagotipo-mar-de-media-${lang}.svg`}
+    />
+
+    <img src="/isotype.svg" alt="Mar de Media" class="w-1/6 md:w-full" />
+  </picture>
+</a>
