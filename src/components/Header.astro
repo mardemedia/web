@@ -1,30 +1,39 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
-import { DEFAULT_LANGUAGE, type lang } from "../i18n/utils";
 import BurguerButton from "./buttons/BurgerButton.astro";
 import AsideMenu from "./AsideMenu.astro";
 import IsotypeAnchor from "./IsotypeAnchor.astro";
 import LangButton from "./buttons/LangButton.astro";
-import { routes } from "../utils/routes";
+import type { HeaderCopy } from "../i18n/content";
+
 interface Props {
-  lang: lang;
+  copy: HeaderCopy;
 }
 
-const { lang } = Astro.props;
-const homeUrl = getRelativeLocaleUrl(Astro.currentLocale ?? DEFAULT_LANGUAGE);
+const { copy }: Props = Astro.props;
 ---
 
 <header
   id="main-header"
   class="sticky top-0 z-50 w-full flex justify-between items-center p-5 lg:py-2 lg:px-16 bg-[#DEF3F4] transition-shadow duration-300"
 >
-  <IsotypeAnchor lang={lang} homeUrl={homeUrl} />
+  <IsotypeAnchor
+    homeUrl={copy.brand.homeUrl}
+    desktopLogoSrc={copy.brand.desktopLogoSrc}
+    mobileLogoSrc={copy.brand.mobileLogoSrc}
+    alt={copy.brand.logoAlt}
+  />
   <BurguerButton />
-  <AsideMenu navLinks={routes} lang={lang} />
+  <AsideMenu
+    navLinks={copy.navLinks}
+    brand={copy.brand}
+    langSwitcher={copy.langSwitcher}
+    menu={copy.menu}
+  />
   <nav class="hidden lg:block">
     <ul class="flex gap-2">
       <LangButton
-        lang={lang}
+        href={copy.langSwitcher.href}
+        label={copy.langSwitcher.label}
         className="text-third pb-1 px-2 flex justify-between items-center relative
                  after:content-[''] after:absolute after:left-0 after:bottom-0
                  after:h-0.5 after:w-full after:bg-secondary
@@ -33,7 +42,7 @@ const homeUrl = getRelativeLocaleUrl(Astro.currentLocale ?? DEFAULT_LANGUAGE);
                  hover:after:scale-x-100"
       />
       {
-        Object.values(routes).map((x) => (
+        copy.navLinks.map((x) => (
           <li>
             <a
               data-nav-link
@@ -45,7 +54,7 @@ const homeUrl = getRelativeLocaleUrl(Astro.currentLocale ?? DEFAULT_LANGUAGE);
                  hover:after:scale-x-100"
               href={`${x.url}`}
             >
-              {x.label[lang]}
+              {x.label}
             </a>
           </li>
         ))

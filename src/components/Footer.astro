@@ -1,16 +1,12 @@
 ---
-import type { lang } from "../i18n/utils";
-
 interface Props {
-  lang: lang;
+  rightsText: string;
 }
 
-const { lang } = Astro.props;
+const { rightsText }: Props = Astro.props;
 const year = new Date().getFullYear();
 ---
 
 <footer class="flex justify-center items-center text-white p-5 bg-third">
-  &#169; Mar de Media {year}. {
-    lang === "es" ? "Todos los derechos reservados" : "All Rights Reserved"
-  }
+  &#169; Mar de Media {year}. {rightsText}
 </footer>

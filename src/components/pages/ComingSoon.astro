@@ -1,27 +1,32 @@
 ---
+import type { ComingSoonCopy } from "../../i18n/content";
 import SecondaryLayout from "../../layouts/SecondaryLayout.astro";
 
+interface Props {
+  copy: ComingSoonCopy;
+}
+
+const { copy }: Props = Astro.props;
 const year = new Date().getFullYear();
 ---
 
 <SecondaryLayout
-  metaTitle="Coming Soon | Mar de Media"
-  metaDescription="Estamos preparando algo increíble para ti."
+  metaTitle={copy.meta.title}
+  metaDescription={copy.meta.description}
 >
   <section
     class="min-h-screen flex flex-col items-center justify-center text-center bg-linear-to-t from-third to-primary px-6"
   >
     <h1 class="text-5xl md:text-7xl font-bold mb-6">
-      Coming <span class="text-secondary">Soon</span>
+      {copy.titleStart} <span class="text-secondary">{copy.titleHighlight}</span>
     </h1>
 
     <p class="max-w-xl text-lg opacity-80 mb-8">
-      We’re crafting something amazing at Mar de Media. Stay tuned your next
-      digital experience is on the way.
+      {copy.description}
     </p>
 
     <footer class="flex justify-center items-center text-white">
-      &#169; Mar de Media {year}. All Rights Reserved
+      &#169; Mar de Media {year}. {copy.footerRights}
     </footer>
   </section>
 </SecondaryLayout>

@@ -4,18 +4,21 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import BubbleContainer from "../components/containers/BubbleContainer.astro";
 import UpButton from "../components/UpButton.astro";
-import { getLangOrFallback, type lang } from "../i18n/utils";
+import type { lang } from "../i18n/utils";
+import type { LayoutCopy } from "../i18n/content";
 import SEOLayout from "./SEOLayout.astro";
 
 interface Props {
+  locale: lang;
   metaTitle: string;
   metaDescription: string;
+  copy: LayoutCopy;
   className?: string;
 }
-const { metaTitle, metaDescription, className }: Props = Astro.props;
+const { locale, metaTitle, metaDescription, copy, className }: Props =
+  Astro.props;
 
 const isPreview = import.meta.env.VERCEL_ENV !== "production";
-const locale: lang = getLangOrFallback(Astro.currentLocale);
 ---
 
 <SEOLayout
@@ -26,10 +29,10 @@ const locale: lang = getLangOrFallback(Astro.currentLocale);
   className={className}
 >
   <BubbleContainer />
-  <Header lang={locale} />
+  <Header copy={copy.header} />
   <div class="flex-1">
     <slot />
   </div>
-  <Footer lang={locale} />
+  <Footer rightsText={copy.footerRights} />
   <UpButton />
 </SEOLayout>
