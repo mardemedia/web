@@ -8,7 +8,7 @@ const LABELS: Record<lang, Record<string, string>> = {
 
     "hero.title.start": "Turn your ",
     "hero.title.highlight": "ideas into reality",
-    "hero.cta": "Start your project ->",
+    "hero.cta": "Start your project →",
 
     "intro.title": "Where your ideas\ncome to life",
     "intro.description":
@@ -17,6 +17,20 @@ const LABELS: Record<lang, Record<string, string>> = {
     "services.title": "Experience \nMar de Media \nthe way it's meant to be",
     "services.cta": "Dive In",
 
+    "projects.eyebrow": "Selected work",
+    "projects.title": "Ideas with direction",
+    "projects.description":
+      "A glimpse into the digital experiences, identities and stories we can shape together.",
+    "projects.restaurancito.category": "Digital product",
+    "projects.restaurancito.title": "Restaurancito",
+    "projects.restaurancito.description":
+      "Your restaurant in sync, from table to kitchen. A platform for managing tables, digital orders, kitchen workflows and staff in real time.",
+    "projects.restaurancito.imageAlt": "Restaurancito digital product graphic",
+    "projects.restaurancito.feature.tables": "Visual table map",
+    "projects.restaurancito.feature.orders": "Digital orders",
+    "projects.restaurancito.feature.kitchen": "Real-time kitchen",
+    "projects.restaurancito.status": "Coming soon",
+    "projects.restaurancito.visitLabel": "Visit restaurancito.com",
     "packages.eyebrow": "Services",
     "packages.title": "Packages",
     "packages.includes": "Includes",
@@ -32,6 +46,8 @@ const LABELS: Record<lang, Record<string, string>> = {
     "nav.home.description": "Get back to home page",
     "nav.services.label": "Services",
     "nav.services.description": "Take a dive into our services",
+    "nav.projects.label": "Projects",
+    "nav.projects.description": "Explore our creative work",
     "nav.packages.label": "Packages",
     "nav.packages.description": "Personalized packages for you",
     "nav.contact.label": "Contact us",
@@ -61,23 +77,37 @@ const LABELS: Record<lang, Record<string, string>> = {
 
     "hero.title.start": "Convierte tus ",
     "hero.title.highlight": "ideas en realidad",
-    "hero.cta": "Inicia tu proyecto ->",
+    "hero.cta": "Inicia tu proyecto →",
 
     "intro.title": "Donde tus ideas\ncobran vida",
     "intro.description":
-      "En Mar de Media, damos vida a tu vision a traves de experiencias digitales que generan resultados.",
+      "En Mar de Media, damos vida a tu visión a través de experiencias digitales que generan resultados.",
 
     "services.title": "Vive \nMar de Media\ncomo debe ser",
-    "services.cta": "Sumergete",
+    "services.cta": "Sumérgete",
 
+    "projects.eyebrow": "Trabajo seleccionado",
+    "projects.title": "Ideas con dirección",
+    "projects.description":
+      "Un vistazo a las experiencias digitales, identidades e historias que podemos crear juntos.",
+    "projects.restaurancito.category": "Producto digital",
+    "projects.restaurancito.title": "Restaurancito",
+    "projects.restaurancito.description":
+      "Tu restaurante en sincronía, de la mesa a la cocina. Una plataforma para gestionar mesas, comandas digitales, cocina y personal en tiempo real.",
+    "projects.restaurancito.imageAlt": "Gráfico del producto digital Restaurancito",
+    "projects.restaurancito.feature.tables": "Mapa visual de mesas",
+    "projects.restaurancito.feature.orders": "Comandas digitales",
+    "projects.restaurancito.feature.kitchen": "Cocina en tiempo real",
+    "projects.restaurancito.status": "Próximamente",
+    "projects.restaurancito.visitLabel": "Visitar restaurancito.com",
     "packages.eyebrow": "Servicios",
     "packages.title": "Paquetes",
     "packages.includes": "Incluye",
     "packages.viewLabel": "Ver paquete",
 
-    "contact.title": "Tu viaje hacia algo extraordinario comienza aqui.",
+    "contact.title": "Tu viaje hacia algo extraordinario comienza aquí.",
     "contact.title.start": "Tu viaje hacia ",
-    "contact.title.end": " comienza aqui.",
+    "contact.title.end": " comienza aquí.",
     "contact.highlight": "algo extraordinario",
     "contact.cta": "Comienza el viaje",
 
@@ -85,26 +115,28 @@ const LABELS: Record<lang, Record<string, string>> = {
     "nav.home.description": "Vuelve al inicio y sigue explorando",
     "nav.services.label": "Servicios",
     "nav.services.description": "Descubre todo lo que podemos hacer por ti",
+    "nav.projects.label": "Proyectos",
+    "nav.projects.description": "Explora nuestro trabajo creativo",
     "nav.packages.label": "Paquetes",
-    "nav.packages.description": "Paquetes disenados a la medida de tu marca",
-    "nav.contact.label": "Contactanos",
+    "nav.packages.description": "Paquetes diseñados a la medida de tu marca",
+    "nav.contact.label": "Contáctanos",
     "nav.contact.description": "Conecta con nosotros y lleva tu idea al siguiente nivel",
 
     "menu.contact.title": "Conectemos",
-    "menu.location": "Puerto Vallarta, Jalisco, Mexico.",
-    "menu.socialLabel": "Siguenos",
+    "menu.location": "Puerto Vallarta, Jalisco, México.",
+    "menu.socialLabel": "Síguenos",
     "menu.socialAriaLabel": "Redes sociales",
 
     "footer.rights": "Todos los derechos reservados",
     "logo.alt": "Mar de Media",
 
-    "comingSoon.meta.title": "Proximamente | Mar de Media",
+    "comingSoon.meta.title": "Próximamente | Mar de Media",
     "comingSoon.meta.description":
-      "Estamos preparando algo increible para ti.",
+      "Estamos preparando algo increíble para ti.",
     "comingSoon.title.start": "Muy",
     "comingSoon.title.highlight": "Pronto",
     "comingSoon.description":
-      "Estamos creando algo increible en Mar de Media. Mantente atento, tu proxima experiencia digital esta en camino.",
+      "Estamos creando algo increíble en Mar de Media. Mantente atento, tu próxima experiencia digital está en camino.",
   },
 };
 

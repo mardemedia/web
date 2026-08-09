@@ -52,6 +52,25 @@ export interface HomePageCopy {
     title: string;
     cta: string;
   };
+  projects: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    items: {
+      category: string;
+      title: string;
+      description: string;
+      imageAlt: string;
+      image: {
+        mobile: string;
+        desktop: string;
+      };
+      features?: string[];
+      status?: string;
+      url?: string;
+      visitLabel?: string;
+    }[];
+  };
   packages: {
     eyebrow: string;
     title: string;
@@ -87,6 +106,11 @@ export const getNavLinks = (t: translate, homeUrl: string): Route[] => [
     label: t("nav.services.label"),
     description: t("nav.services.description"),
     url: "#services-section",
+  },
+  {
+    label: t("nav.projects.label"),
+    description: t("nav.projects.description"),
+    url: "#projects-section",
   },
   {
     label: t("nav.packages.label"),
@@ -133,6 +157,31 @@ export const getHomePageCopy = (t: translate): HomePageCopy => ({
   services: {
     title: t("services.title"),
     cta: t("services.cta"),
+  },
+  projects: {
+    eyebrow: t("projects.eyebrow"),
+    title: t("projects.title"),
+    description: t("projects.description"),
+    items: [
+      {
+        category: t("projects.restaurancito.category"),
+        title: t("projects.restaurancito.title"),
+        description: t("projects.restaurancito.description"),
+        imageAlt: t("projects.restaurancito.imageAlt"),
+        image: {
+          mobile: "/restaurancito-hero.png",
+          desktop: "/restaurancito-hero.png",
+        },
+        features: [
+          t("projects.restaurancito.feature.tables"),
+          t("projects.restaurancito.feature.orders"),
+          t("projects.restaurancito.feature.kitchen"),
+        ],
+        status: t("projects.restaurancito.status"),
+        url: "https://restaurancito.com",
+        visitLabel: t("projects.restaurancito.visitLabel"),
+      },
+    ],
   },
   packages: {
     eyebrow: t("packages.eyebrow"),

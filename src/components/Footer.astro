@@ -7,6 +7,9 @@ const { rightsText }: Props = Astro.props;
 const year = new Date().getFullYear();
 ---
 
-<footer class="flex justify-center items-center text-white p-5 bg-third">
-  &#169; Mar de Media {year}. {rightsText}
+<footer class="border-t border-white/10 bg-third px-5 py-8 text-white/65 sm:px-8 lg:px-16">
+  <div class="mx-auto flex w-full max-w-[1472px] flex-col items-center justify-between gap-3 text-center text-xs sm:flex-row sm:text-left sm:text-sm">
+    <span class="tracking-[0.08em] text-white">MAR DE MEDIA</span>
+    <span>&#169; {year}. {rightsText}.</span>
+  </div>
 </footer>

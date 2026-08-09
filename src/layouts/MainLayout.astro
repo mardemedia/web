@@ -2,7 +2,6 @@
 import "./../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import BubbleContainer from "../components/containers/BubbleContainer.astro";
 import UpButton from "../components/UpButton.astro";
 import type { lang } from "../i18n/utils";
 import type { LayoutCopy } from "../i18n/content";
@@ -28,7 +27,6 @@ const isPreview = import.meta.env.VERCEL_ENV !== "production";
   locale={locale}
   className={className}
 >
-  <BubbleContainer />
   <Header copy={copy.header} />
   <div class="flex-1">
     <slot />

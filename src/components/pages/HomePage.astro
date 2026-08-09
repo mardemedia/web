@@ -3,9 +3,10 @@ import type { LayoutCopy, HomePageCopy } from "../../i18n/content";
 import type { lang } from "../../i18n/utils";
 import MainLayout from "../../layouts/MainLayout.astro";
 import Button from "../buttons/Button.astro";
-import Carousel from "../Carousel.astro";
+import BubbleContainer from "../containers/BubbleContainer.astro";
 import SectionContainer from "../containers/SectionContainer.astro";
 import Hero from "../Hero.astro";
+import ServicesBentoGrid from "../ServicesBentoGrid.astro";
 
 interface ServiceItem {
   img: {
@@ -13,6 +14,7 @@ interface ServiceItem {
     desktop: string;
   };
   title: string;
+  description?: string;
 }
 
 interface PackageItem {
@@ -33,6 +35,7 @@ interface Props {
 const { lang, copy, layoutCopy, services, packages }: Props = Astro.props;
 const introTitleLines = copy.intro.title.split("\n");
 const servicesTitleLines = copy.services.title.split("\n");
+const [featuredProject, ...additionalProjects] = copy.projects.items;
 ---
 
 <MainLayout
@@ -47,117 +50,236 @@ const servicesTitleLines = copy.services.title.split("\n");
     cta={copy.hero.cta}
   />
 
-  <div class="h-full bg-linear-to-t from-third to-primary">
-    <SectionContainer id="intro-section">
-      <h2 class="text-4xl lg:text-6xl">
+  <div
+    class="h-full overflow-hidden bg-[linear-gradient(180deg,#22afb3_0%,#247f98_40%,#303158_100%)]"
+  >
+    <div class="relative overflow-hidden">
+      <BubbleContainer />
+
+    <SectionContainer
+      id="intro-section"
+      className="items-center pb-10! sm:pb-12! lg:pb-16!"
+    >
+      <h2
+        class="max-w-4xl text-balance text-[clamp(2.25rem,5vw,4.75rem)] leading-[1.02] tracking-[-0.04em]"
+      >
         {introTitleLines[0]}
         <br />
         {introTitleLines[1]}
       </h2>
 
-      <p class="lg:text-xl">
+      <p class="max-w-2xl text-pretty text-base leading-relaxed text-white/85 sm:text-lg lg:text-xl">
         {copy.intro.description}
       </p>
     </SectionContainer>
 
     <section
       id="services-section"
-      class="px-5 flex flex-col gap-4 items-center
-         xl:grid xl:grid-cols-[0.7fr_1.3fr] xl:items-center
-         xl:gap-x-8 lg:p-16
-         max-w-7xl mx-auto xl:max-w-400"
+      class="mx-auto w-full max-w-[1600px] px-5 pt-8 pb-20 sm:px-8 sm:pt-10 sm:pb-24 lg:px-16 lg:pt-12 lg:pb-32"
     >
-      <div class="flex flex-col items-center md:items-start gap-12 py-2">
-        <h2 class="text-3xl lg:text-5xl text-center xl:text-start">
-          {servicesTitleLines[0]}
-          <em class="text-secondary"> {servicesTitleLines[1]}</em>
-          <br />
-          {servicesTitleLines[2]}
-        </h2>
+      <header class="mb-10 flex flex-col items-center gap-7 text-center sm:mb-14 lg:flex-row lg:items-end lg:justify-between lg:text-left">
+        <div>
+          <p class="mb-4 text-xs uppercase tracking-[0.32em] text-secondary">
+            {copy.packages.eyebrow}
+          </p>
+          <h2
+            class="max-w-3xl text-balance text-[clamp(2.4rem,5vw,5rem)] leading-[1.02] tracking-[-0.04em]"
+          >
+            {servicesTitleLines[0]}
+            <em class="text-secondary"> {servicesTitleLines[1]}</em>
+            <br />
+            {servicesTitleLines[2]}
+          </h2>
+        </div>
 
         <Button
           text={copy.services.cta}
           as="a"
           href="#contact-section"
-          className="hidden! xl:inline-flex! lg:mx-auto xl:mx-0"
+          className="lg:mx-0 lg:mb-1"
         />
+      </header>
+
+      <ServicesBentoGrid services={services} />
+    </section>
+
+    <section
+      id="projects-section"
+      class="scroll-mt-20 px-5 py-20 sm:px-8 sm:py-24 lg:px-16 lg:py-32"
+    >
+      <div class="mx-auto w-full max-w-[1472px]">
+        <header class="mb-10 grid gap-6 sm:mb-14 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,0.72fr)] lg:items-end">
+          <div>
+            <p class="mb-4 text-xs uppercase tracking-[0.32em] text-secondary">
+              {copy.projects.eyebrow}
+            </p>
+            <h2 class="max-w-3xl text-balance text-[clamp(2.75rem,6vw,5.5rem)] leading-none tracking-[-0.05em] text-white">
+              {copy.projects.title}
+            </h2>
+          </div>
+          <p class="max-w-xl text-pretty text-base leading-relaxed text-white/75 lg:justify-self-end lg:text-lg">
+            {copy.projects.description}
+          </p>
+        </header>
+
+        {
+          featuredProject && (
+            <article class="group overflow-hidden rounded-[2rem] border border-white/15 bg-[#0c0715] shadow-[0_30px_90px_rgba(20,26,58,0.3)] lg:grid lg:min-h-[36rem] lg:grid-cols-[0.9fr_1.1fr]">
+              <div class="relative z-10 flex flex-col justify-between p-7 sm:p-10 lg:p-12 xl:p-14">
+                <div class="flex flex-wrap items-center gap-2">
+                  {featuredProject.status && (
+                    <span class="rounded-full bg-secondary px-4 py-2 text-[0.68rem] uppercase tracking-[0.2em] text-third">
+                      {featuredProject.status}
+                    </span>
+                  )}
+                  <span class="rounded-full border border-white/20 px-4 py-2 text-[0.68rem] uppercase tracking-[0.2em] text-white/80">
+                    {featuredProject.category}
+                  </span>
+                </div>
+
+                <div class="mt-16 lg:mt-12">
+                  <p class="mb-4 text-xs tracking-[0.25em] text-white/45">01</p>
+                  <h3 class="text-balance text-[clamp(2.75rem,5vw,5rem)] leading-none tracking-[-0.055em] text-white">
+                    {featuredProject.title}
+                  </h3>
+                  <p class="mt-5 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
+                    {featuredProject.description}
+                  </p>
+
+                  {featuredProject.features && (
+                    <ul class="mt-7 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3" aria-label={featuredProject.title}>
+                      {featuredProject.features.map((feature) => (
+                        <li class="border-l border-[#863bff] pl-3 text-sm leading-snug text-white/70">
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {featuredProject.url && (
+                    <a
+                      href={featuredProject.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="mt-9 inline-flex items-center gap-3 border-b border-secondary pb-2 text-sm uppercase tracking-[0.18em] text-white transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary"
+                    >
+                      {featuredProject.visitLabel}
+                      <span aria-hidden="true">↗</span>
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              <div class="relative min-h-[24rem] overflow-hidden border-t border-white/10 bg-[radial-gradient(circle_at_50%_44%,rgba(126,20,255,0.34),transparent_46%)] sm:min-h-[30rem] lg:min-h-full lg:border-t-0 lg:border-l">
+                <div class="absolute inset-8 rounded-[2rem] border border-white/8 sm:inset-12"></div>
+                <div class="absolute inset-16 rounded-[2rem] border border-[#863bff]/18 sm:inset-24"></div>
+                <picture class="absolute inset-0 grid place-items-center">
+                  <source media="(min-width: 768px)" srcset={featuredProject.image.desktop} />
+                  <img
+                    src={featuredProject.image.mobile}
+                    alt={featuredProject.imageAlt}
+                    loading="lazy"
+                    decoding="async"
+                    class="h-[68%] w-[68%] object-contain opacity-90 transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  />
+                </picture>
+              </div>
+            </article>
+          )
+        }
+
+        {
+          additionalProjects.length > 0 && (
+            <div class="mt-6 grid gap-6 md:grid-cols-2">
+              {additionalProjects.map((project, index) => (
+                <article class="overflow-hidden rounded-[1.75rem] border border-white/15 bg-third/20 p-7 sm:p-9">
+                  <p class="mb-12 text-xs tracking-[0.25em] text-white/45">
+                    {String(index + 2).padStart(2, "0")}
+                  </p>
+                  <p class="mb-3 text-xs uppercase tracking-[0.22em] text-secondary">
+                    {project.category}
+                  </p>
+                  <h3 class="text-3xl tracking-[-0.04em] text-white">{project.title}</h3>
+                  <p class="mt-4 leading-relaxed text-white/70">{project.description}</p>
+                </article>
+              ))}
+            </div>
+          )
+        }
       </div>
-
-      <Carousel slides={services} />
-
-      <Button
-        text={copy.services.cta}
-        as="a"
-        href="#contact-section"
-        className="xl:hidden"
-      />
     </section>
 
     <section
       id="packages-section"
-      class="bg-transparent px-5 py-10 md:py-20 lg:px-16 lg:pb-28 lg:pt-0 max-w-7xl mx-auto xl:max-w-400"
+      class="mx-auto w-full max-w-[1600px] px-5 py-20 sm:px-8 sm:py-24 lg:px-16 lg:py-32"
     >
       <div class="mx-auto">
-        <div class="lg:mb-10">
-          <p
-            class="mb-2 text-xs font-medium uppercase tracking-[0.35em] text-white italic"
-          >
-            {copy.packages.eyebrow}
-          </p>
+        <div class="mb-10 sm:mb-14">
+          <div>
+            <p
+              class="mb-4 text-xs font-medium uppercase tracking-[0.32em] text-secondary"
+            >
+              {copy.packages.eyebrow}
+            </p>
 
-          <h2
-            class="max-w-xl text-5xl leading-none tracking-tight text-white lg:text-7xl"
-          >
-            {copy.packages.title}
-          </h2>
+            <h2
+              class="max-w-xl text-[clamp(2.75rem,6vw,5.5rem)] leading-none tracking-[-0.05em] text-white"
+            >
+              {copy.packages.title}
+            </h2>
+          </div>
         </div>
 
-        <div class="divide-y divide-primary/15">
+        <div class="divide-y divide-white/15 border-y border-white/15">
           {
             packages.map((item, index) => (
-              <article class="grid gap-8 py-12 lg:grid-cols-[90px_260px_auto] xl:grid-cols-[90px_260px_1fr_280px_48px] lg:items-start lg:gap-8">
-                <div class="text-5xl leading-none text-white/15 lg:text-6xl">
+              <article class="group grid gap-x-7 gap-y-7 py-10 transition-colors duration-300 hover:bg-white/[0.025] sm:grid-cols-[64px_minmax(0,1fr)] sm:px-4 sm:py-12 lg:grid-cols-[80px_240px_minmax(0,1fr)] lg:gap-x-8 lg:px-6 lg:py-14 xl:grid-cols-[80px_240px_minmax(0,1fr)_260px_56px] xl:items-start xl:px-8">
+                <div class="text-4xl leading-none text-white/20 sm:row-span-3 sm:text-5xl lg:row-span-1">
                   {String(index + 1).padStart(2, "0")}
                 </div>
 
-                <div>
-                  <p class="mb-4 text-xs font-medium uppercase tracking-[0.35em] text-secondary">
+                <div class="sm:col-start-2 lg:col-start-auto">
+                  <p class="mb-3 text-xs font-medium uppercase tracking-[0.3em] text-secondary">
                     {item.tag}
                   </p>
 
-                  <h3 class="text-3xl leading-none tracking-tight text-white lg:text-4xl">
+                  <h3 class="text-balance text-3xl leading-[1.05] tracking-[-0.035em] text-white lg:text-4xl">
                     {item.title}
                   </h3>
                 </div>
 
-                <p class=" text-base leading-relaxed text-white lg:text-lg">
+                <p class="text-sm leading-relaxed text-white/82 sm:col-start-2 sm:text-base lg:col-start-auto lg:text-lg">
                   {item.description}
                 </p>
 
-                <div class="lg:hidden xl:block">
-                  <h4 class="lg:hidden text-center pb-4">
+                <div class="sm:col-start-2 lg:col-span-2 lg:col-start-2 xl:col-span-1 xl:col-start-auto">
+                  <h4 class="mb-4 text-xs uppercase tracking-[0.25em] text-white/55">
                     {copy.packages.includes}
                   </h4>
-                  <ul class="flex flex-wrap gap-x-4 justify-center lg:block space-y-2 text-sm leading-relaxed text-white/75 lg:text-base">
+                  <ul class="grid gap-2.5 text-sm leading-relaxed text-white/75 sm:grid-cols-2 lg:text-base xl:grid-cols-1">
                     {item.features.map((feature) => (
-                      <li>{feature}</li>
+                      <li class="flex items-start gap-3">
+                        <span class="mt-[0.55em] size-1.5 shrink-0 rounded-full bg-secondary"></span>
+                        <span>{feature}</span>
+                      </li>
                     ))}
                   </ul>
                 </div>
 
                 <Button
                   as="a"
-                  text="->"
+                  text="→"
                   aria-label={`${copy.packages.viewLabel} ${item.title}`}
                   href="#contact-section"
-                  className="hidden! xl:flex! xl:self-center! w-12!"
+                  className="hidden! xl:inline-flex! xl:size-14! xl:self-center! xl:px-0!"
                 />
 
                 <Button
-                  text={copy.services.cta}
                   as="a"
+                  text={copy.services.cta}
+                  aria-label={`${copy.packages.viewLabel} ${item.title}`}
                   href="#contact-section"
-                  className="mx-auto xl:mx-0 xl:hidden col-span-full self-center"
+                  className="sm:col-start-2 lg:col-span-2 lg:col-start-2 xl:hidden"
                 />
               </article>
             ))
@@ -165,18 +287,31 @@ const servicesTitleLines = copy.services.title.split("\n");
         </div>
       </div>
     </section>
+    </div>
 
-    <section class="relative" id="contact-section">
+    <section
+      class="relative flex min-h-[32rem] items-center justify-center overflow-hidden sm:min-h-[36rem] lg:min-h-[42rem]"
+      id="contact-section"
+    >
       <img
         src="/contact.webp"
         alt=""
-        class="w-full aspect-square md:aspect-video lg:aspect-21/9 object-cover opacity-30"
+        aria-hidden="true"
+        class="absolute inset-0 size-full object-cover"
       />
+      <div
+        class="absolute inset-0 bg-[linear-gradient(180deg,rgba(48,49,88,0.5),rgba(48,49,88,0.88))]"
+      ></div>
 
       <div
-        class="absolute inset-0 p-4 flex flex-col justify-center items-center gap-4 text-center"
+        class="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center justify-center gap-8 px-5 py-20 text-center sm:px-8 lg:px-16"
       >
-        <h2 class="text-3xl md:text-4xl lg:text-5xl md:w-2/3">
+        <p class="text-xs uppercase tracking-[0.32em] text-secondary">
+          Mar de Media
+        </p>
+        <h2
+          class="max-w-5xl text-balance text-[clamp(2.25rem,5.8vw,5.5rem)] leading-[1.02] tracking-[-0.045em]"
+        >
           {copy.contact.titleStart}
           <span class="text-secondary">
             {copy.contact.titleHighlight}
@@ -188,7 +323,7 @@ const servicesTitleLines = copy.services.title.split("\n");
         <Button
           as="a"
           text={copy.contact.cta}
-          className="w-2/3"
+          className="mt-2"
           href="mailto:mardemedia@gmail.com"
         />
       </div>
