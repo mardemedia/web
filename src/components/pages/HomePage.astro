@@ -4,6 +4,7 @@ import type { lang } from "../../i18n/utils";
 import MainLayout from "../../layouts/MainLayout.astro";
 import Button from "../buttons/Button.astro";
 import Carousel from "../Carousel.astro";
+import BubbleContainer from "../containers/BubbleContainer.astro";
 import SectionContainer from "../containers/SectionContainer.astro";
 import Hero from "../Hero.astro";
 
@@ -51,6 +52,9 @@ const servicesTitleLines = copy.services.title.split("\n");
   <div
     class="h-full overflow-hidden bg-[linear-gradient(180deg,#22afb3_0%,#247f98_40%,#303158_100%)]"
   >
+    <div class="relative overflow-hidden">
+      <BubbleContainer />
+
     <SectionContainer
       id="intro-section"
       className="items-center pb-10! sm:pb-12! lg:pb-16!"
@@ -181,6 +185,7 @@ const servicesTitleLines = copy.services.title.split("\n");
         </div>
       </div>
     </section>
+    </div>
 
     <section
       class="relative flex min-h-[32rem] items-center justify-center overflow-hidden sm:min-h-[36rem] lg:min-h-[42rem]"
