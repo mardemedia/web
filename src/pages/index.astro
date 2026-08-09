@@ -1,8 +1,31 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
 import HomePage from "../components/pages/HomePage.astro";
+import { getHomePageI18n } from "../i18n/page-data";
 import { getLangOrFallback, type lang } from "../i18n/utils";
+import { getAllPackages } from "../services/packages.service";
+import { getAllServices } from "../services/services.service";
 
 const locale: lang = getLangOrFallback(Astro.currentLocale);
+const nextLang: lang = locale === "es" ? "en" : "es";
+const pathWithoutLocale = Astro.url.pathname.replace(/^\/(en|es)/, "") || "/";
+const homeUrl = getRelativeLocaleUrl(locale);
+const langSwitcher = {
+  href: getRelativeLocaleUrl(nextLang, pathWithoutLocale),
+  label: nextLang,
+};
+const { copy, layoutCopy } = getHomePageI18n(locale, {
+  homeUrl,
+  langSwitcher,
+});
+const services = await getAllServices(locale);
+const packages = await getAllPackages(locale);
 ---
 
-<HomePage lang={locale} />
+<HomePage
+  lang={locale}
+  copy={copy}
+  layoutCopy={layoutCopy}
+  services={services}
+  packages={packages}
+/>

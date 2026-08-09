@@ -7,6 +7,7 @@ export const LANGUAGES = {
 
 export type lang = keyof typeof LANGUAGES;
 export type label = keyof (typeof LABELS)[lang];
+export type translate = (label: label) => string;
 export const isLang = (value: string): value is lang => value in LANGUAGES;
 export const getLangOrFallback = (
   value: string = "es",
@@ -17,9 +18,6 @@ export const DEFAULT_LANGUAGE: lang = "es";
 
 export function getTranslation(
   lang: lang = DEFAULT_LANGUAGE,
-): (label: label) => string {
+): translate {
   return (label: label) => LABELS[lang][label];
 }
-
-export const getSpanishLabel = (label: label) => getTranslation("es")(label);
-export const getEnglishLabel = (label: label) => getTranslation("en")(label);

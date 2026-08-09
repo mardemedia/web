@@ -1,6 +1,4 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
-import { DEFAULT_LANGUAGE, type lang } from "../i18n/utils";
 import IsotypeAnchor from "./IsotypeAnchor.astro";
 import CrossButton from "./CrossButton.astro";
 import RightArrow from "./icons/RightArrow.astro";
@@ -8,28 +6,38 @@ import FBIcon from "./icons/FBIcon.astro";
 import IGIcon from "./icons/IGIcon.astro";
 import type { Route } from "../utils/routes";
 import LangButton from "./buttons/LangButton.astro";
+import type {
+  BrandCopy,
+  LanguageSwitcherCopy,
+  MenuCopy,
+} from "../i18n/content";
 
 interface Props {
   navLinks: Route[];
-  lang: lang;
+  brand: BrandCopy;
+  langSwitcher: LanguageSwitcherCopy;
+  menu: MenuCopy;
 }
 
-const homeUrl = getRelativeLocaleUrl(Astro.currentLocale ?? DEFAULT_LANGUAGE);
-const { navLinks, lang }: Props = Astro.props;
+const { navLinks, brand, langSwitcher, menu }: Props = Astro.props;
 ---
 
 <aside
   id="aside-menu"
   class="fixed inset-0 z-20 pointer-events-none opacity-0 transition-opacity duration-300 bg-black/30 backdrop-blur-sm lg:hidden"
 >
-  <!-- PANEL -->
   <div
     id="aside-panel"
     class="absolute inset-0 md:inset-y-0 md:right-0 md:left-auto md:w-105 bg-[#DEF3F4] flex flex-col will-change-transform"
     style="transform: translateX(100%); opacity: 0; filter: blur(4px);"
   >
     <header class="flex justify-between text-black py-5 px-5">
-      <IsotypeAnchor lang={lang} homeUrl={homeUrl} />
+      <IsotypeAnchor
+        homeUrl={brand.homeUrl}
+        desktopLogoSrc={brand.desktopLogoSrc}
+        mobileLogoSrc={brand.mobileLogoSrc}
+        alt={brand.logoAlt}
+      />
       <CrossButton />
     </header>
 
@@ -38,17 +46,17 @@ const { navLinks, lang }: Props = Astro.props;
         <nav>
           <ul class="pt-5">
             {
-              Object.values(navLinks).map((x) => (
+              navLinks.map((x) => (
                 <li>
                   <a
                     data-nav-link
                     class="text-third pb-5 px-5 flex justify-between items-center"
-                    href={`${x.url}`}
+                    href={x.url}
                   >
                     <div class="flex flex-col uppercase gap-1">
-                      {x.label[lang]}
+                      {x.label}
                       <span class="normal-case opacity-70">
-                        {x.description[lang]}
+                        {x.description}
                       </span>
                     </div>
                     <RightArrow class="text-third" />
@@ -64,28 +72,24 @@ const { navLinks, lang }: Props = Astro.props;
 
       <div class="mt-auto">
         <div class="p-5 text-third">
-          <span class="text-xl mb-4"
-            >{lang === "es" ? "Conectemos" : "Let's Connect"}</span
-          >
+          <span class="text-xl mb-4">{menu.contactTitle}</span>
           <address>
             <p>
-              Email:
-              <a href="mailto:mardemedia@gmail.com"> mardemedia@gmail.com </a>
+              {menu.emailLabel}
+              <a href={`mailto:${menu.email}`}> {menu.email} </a>
             </p>
-            <p>Puerto Vallarta, Jalisco, México.</p>
+            <p>{menu.location}</p>
           </address>
         </div>
 
         <div class="flex items-center mx-5">
           <div class="grow border-t border-third"></div>
-          <span class="mx-4 text-third opacity-70"
-            >{lang === "es" ? "Síguenos" : "Follow Us"}</span
-          >
+          <span class="mx-4 text-third opacity-70">{menu.socialLabel}</span>
           <div class="grow border-t border-third"></div>
         </div>
 
         <footer class="p-5 text-third relative">
-          <nav aria-label="Social media">
+          <nav aria-label={menu.socialAriaLabel}>
             <ul class="flex gap-4 items-center justify-center">
               <li>
                 <a href="https://facebook.com" target="_blank" rel="noopener">
@@ -101,7 +105,8 @@ const { navLinks, lang }: Props = Astro.props;
           </nav>
 
           <LangButton
-            lang={lang}
+            href={langSwitcher.href}
+            label={langSwitcher.label}
             className="absolute bottom-5 right-5 font-light"
           />
         </footer>

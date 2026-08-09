@@ -1,14 +1,13 @@
 ---
 import Waves from "./Waves.astro";
-import { getEnglishLabel, getSpanishLabel, type lang } from "../i18n/utils";
 
 interface Props {
-  lang: lang;
+  titleStart: string;
+  titleHighlight: string;
+  cta: string;
 }
 
-const { lang }: Props = Astro.props;
-
-const t = lang === "es" ? getSpanishLabel : getEnglishLabel;
+const { titleStart, titleHighlight, cta }: Props = Astro.props;
 ---
 
 <section
@@ -18,9 +17,9 @@ const t = lang === "es" ? getSpanishLabel : getEnglishLabel;
     class="text-center flex flex-col justify-center md:items-center gap-5 text-third flex-1"
   >
     <h1 class="font-primary text-3xl md:text-4xl lg:text-7xl md:w-3/4">
-      {t("hero.title.start")}
+      {titleStart}
       <span class="text-secondary">
-        {t("hero.title.highlight")}
+        {titleHighlight}
       </span>
     </h1>
 
@@ -34,7 +33,7 @@ const t = lang === "es" ? getSpanishLabel : getEnglishLabel;
                  after:transition-transform after:duration-300
                  hover:after:scale-x-100 text-xl"
     >
-      {t("hero.cta")}
+      {cta}
     </a>
   </div>
 

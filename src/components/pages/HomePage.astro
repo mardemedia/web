@@ -1,37 +1,62 @@
 ---
-import { getEnglishLabel, getSpanishLabel, type lang } from "../../i18n/utils";
+import type { LayoutCopy, HomePageCopy } from "../../i18n/content";
+import type { lang } from "../../i18n/utils";
 import MainLayout from "../../layouts/MainLayout.astro";
-import { getAllPackages } from "../../services/packages.service";
-import { getAllServices } from "../../services/services.service";
 import Button from "../buttons/Button.astro";
 import Carousel from "../Carousel.astro";
 import SectionContainer from "../containers/SectionContainer.astro";
 import Hero from "../Hero.astro";
 
-interface Props {
-  lang: lang;
+interface ServiceItem {
+  img: {
+    mobile: string;
+    desktop: string;
+  };
+  title: string;
 }
 
-const { lang }: Props = Astro.props;
+interface PackageItem {
+  tag: string;
+  title: string;
+  description: string;
+  features: string[];
+}
 
-const t = lang === "es" ? getSpanishLabel : getEnglishLabel;
-const services = await getAllServices(lang);
-const packages = await getAllPackages(lang);
+interface Props {
+  lang: lang;
+  copy: HomePageCopy;
+  layoutCopy: LayoutCopy;
+  services: ServiceItem[];
+  packages: PackageItem[];
+}
+
+const { lang, copy, layoutCopy, services, packages }: Props = Astro.props;
+const introTitleLines = copy.intro.title.split("\n");
+const servicesTitleLines = copy.services.title.split("\n");
 ---
 
-<MainLayout metaTitle={t("meta.title")} metaDescription={t("meta.description")}>
-  <Hero lang={lang} />
+<MainLayout
+  locale={lang}
+  metaTitle={copy.meta.title}
+  metaDescription={copy.meta.description}
+  copy={layoutCopy}
+>
+  <Hero
+    titleStart={copy.hero.titleStart}
+    titleHighlight={copy.hero.titleHighlight}
+    cta={copy.hero.cta}
+  />
 
   <div class="h-full bg-linear-to-t from-third to-primary">
     <SectionContainer id="intro-section">
       <h2 class="text-4xl lg:text-6xl">
-        {t("intro.title").split("\n")[0]}
+        {introTitleLines[0]}
         <br />
-        {t("intro.title").split("\n")[1]}
+        {introTitleLines[1]}
       </h2>
 
       <p class="lg:text-xl">
-        {t("intro.description")}
+        {copy.intro.description}
       </p>
     </SectionContainer>
 
@@ -44,14 +69,14 @@ const packages = await getAllPackages(lang);
     >
       <div class="flex flex-col items-center md:items-start gap-12 py-2">
         <h2 class="text-3xl lg:text-5xl text-center xl:text-start">
-          {t("services.title").split("\n")[0]}
-          <em class="text-secondary"> {t("services.title").split("\n")[1]}</em>
+          {servicesTitleLines[0]}
+          <em class="text-secondary"> {servicesTitleLines[1]}</em>
           <br />
-          {t("services.title").split("\n")[2]}
+          {servicesTitleLines[2]}
         </h2>
 
         <Button
-          text={t("services.cta")}
+          text={copy.services.cta}
           as="a"
           href="#contact-section"
           className="hidden! xl:inline-flex! lg:mx-auto xl:mx-0"
@@ -61,7 +86,7 @@ const packages = await getAllPackages(lang);
       <Carousel slides={services} />
 
       <Button
-        text={t("services.cta")}
+        text={copy.services.cta}
         as="a"
         href="#contact-section"
         className="xl:hidden"
@@ -77,13 +102,13 @@ const packages = await getAllPackages(lang);
           <p
             class="mb-2 text-xs font-medium uppercase tracking-[0.35em] text-white italic"
           >
-            {t("packages.eyebrow")}
+            {copy.packages.eyebrow}
           </p>
 
           <h2
             class="max-w-xl text-5xl leading-none tracking-tight text-white lg:text-7xl"
           >
-            {t("packages.title")}
+            {copy.packages.title}
           </h2>
         </div>
 
@@ -110,7 +135,9 @@ const packages = await getAllPackages(lang);
                 </p>
 
                 <div class="lg:hidden xl:block">
-                  <h4 class="lg:hidden text-center pb-4">Incluye</h4>
+                  <h4 class="lg:hidden text-center pb-4">
+                    {copy.packages.includes}
+                  </h4>
                   <ul class="flex flex-wrap gap-x-4 justify-center lg:block space-y-2 text-sm leading-relaxed text-white/75 lg:text-base">
                     {item.features.map((feature) => (
                       <li>{feature}</li>
@@ -120,14 +147,14 @@ const packages = await getAllPackages(lang);
 
                 <Button
                   as="a"
-                  text="→"
-                  aria-label={`${t("packages.viewLabel")} ${item.title}`}
+                  text="->"
+                  aria-label={`${copy.packages.viewLabel} ${item.title}`}
                   href="#contact-section"
                   className="hidden! xl:flex! xl:self-center! w-12!"
                 />
 
                 <Button
-                  text={t("services.cta")}
+                  text={copy.services.cta}
                   as="a"
                   href="#contact-section"
                   className="mx-auto xl:mx-0 xl:hidden col-span-full self-center"
@@ -150,17 +177,17 @@ const packages = await getAllPackages(lang);
         class="absolute inset-0 p-4 flex flex-col justify-center items-center gap-4 text-center"
       >
         <h2 class="text-3xl md:text-4xl lg:text-5xl md:w-2/3">
-          {lang === "es" ? "Tu viaje hacia " : "Your journey to "}
+          {copy.contact.titleStart}
           <span class="text-secondary">
-            {t("contact.highlight")}
+            {copy.contact.titleHighlight}
           </span>
           <br />
-          {lang === "es" ? " comienza aquí." : " starts here."}
+          {copy.contact.titleEnd}
         </h2>
 
         <Button
           as="a"
-          text={t("contact.cta")}
+          text={copy.contact.cta}
           className="w-2/3"
           href="mailto:mardemedia@gmail.com"
         />
