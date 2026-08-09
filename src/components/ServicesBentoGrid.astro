@@ -1,0 +1,90 @@
+---
+interface ServiceItem {
+  img: {
+    mobile: string;
+    desktop: string;
+  };
+  title: string;
+  description?: string;
+}
+
+interface Props {
+  services: ServiceItem[];
+}
+
+const { services }: Props = Astro.props;
+const cardLayout = [
+  "lg:col-span-8",
+  "lg:col-span-4",
+  "lg:col-span-4",
+  "lg:col-span-8",
+];
+const imagePosition = [
+  "object-center",
+  "object-[58%_center]",
+  "object-[62%_center]",
+  "object-center",
+];
+---
+
+<div class="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-12 lg:gap-6">
+  {
+    services.map((service, index) => (
+      <article
+        class:list={[
+          "group relative min-h-[23rem] overflow-hidden rounded-[1.75rem] border border-white/15 bg-third/20 shadow-[0_24px_60px_rgba(20,26,58,0.18)] sm:min-h-[24rem] lg:min-h-[27rem]",
+          cardLayout[index] ?? "lg:col-span-6",
+        ]}
+      >
+        <picture class="absolute inset-0 block">
+          <source media="(min-width: 768px)" srcset={service.img.desktop} />
+          <img
+            src={service.img.mobile}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            decoding="async"
+            class:list={[
+              "size-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]",
+              imagePosition[index] ?? "object-center",
+            ]}
+          />
+        </picture>
+
+        <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(20,26,58,0.1)_5%,rgba(20,26,58,0.18)_38%,rgba(20,26,58,0.94)_100%)]"></div>
+
+        <div class="relative flex min-h-[23rem] flex-col justify-between p-6 sm:min-h-[24rem] sm:p-7 lg:min-h-[27rem] lg:p-9">
+          <div class="flex items-center justify-between gap-6">
+            <span class="text-xs tracking-[0.25em] text-white/65">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <span class="flex items-center gap-3 text-[0.65rem] uppercase tracking-[0.22em] text-white/65">
+              <span class="h-px w-8 bg-secondary transition-[width] duration-300 group-hover:w-12"></span>
+              Mar de Media
+            </span>
+          </div>
+
+          <div class:list={["max-w-2xl", (index === 1 || index === 2) && "lg:max-w-sm"]}>
+            <h3
+              class:list={[
+                "text-balance leading-[1.02] tracking-[-0.045em] text-white",
+                index === 0 || index === 3
+                  ? "text-4xl sm:text-[2.75rem] lg:text-[3.5rem]"
+                  : "text-3xl sm:text-[2.15rem] lg:text-[2.5rem]",
+              ]}
+            >
+              {service.title}
+            </h3>
+            {
+              service.description && (
+                <p class="mt-4 max-w-xl text-sm leading-relaxed text-white/78 sm:text-base">
+                  {service.description}
+                </p>
+              )
+            }
+          </div>
+        </div>
+      </article>
+    ))
+  }
+</div>
