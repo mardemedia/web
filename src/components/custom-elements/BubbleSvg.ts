@@ -53,17 +53,10 @@ class BubbleSvg extends HTMLElement {
                 <stop offset="0%"   stop-color="rgba(255,255,255,0.85)"/>
                 <stop offset="100%" stop-color="${palette.fill}"/>
               </radialGradient>
-              <filter id="is-${id}" x="-50%" y="-50%" width="200%" height="200%">
-                <feOffset dx="-2" dy="-2"/>
-                <feGaussianBlur stdDeviation="2" result="ob"/>
-                <feComposite operator="out" in="SourceGraphic" in2="ob" result="inv"/>
-                <feFlood flood-color="${palette.shadow}" result="col"/>
-                <feComposite operator="in"   in="col"   in2="inv"          result="shad"/>
-                <feComposite operator="over" in="shad"  in2="SourceGraphic"/>
-              </filter>
             </defs>
             <circle  cx="${cx}" cy="${cy}" r="${r}"
-                     fill="url(#bg-${id})" filter="url(#is-${id})"/>
+                     fill="url(#bg-${id})"
+                     stroke="${palette.shadow}" stroke-width="1"/>
             <ellipse cx="${cx - glowOx}" cy="${cy - glowOy}"
                      rx="${glowRx}" ry="${glowRy}"
                      fill="rgba(255,255,255,0.7)"/>

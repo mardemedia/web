@@ -15,11 +15,13 @@
 
 html {
     scroll-padding-top: 5.5rem;
+    overscroll-behavior-y: none;
 }
 
 body {
     margin: 0;
     overflow-x: clip;
+    overscroll-behavior-y: none;
     background: #303158;
     font-family: var(--font-primary);
     -webkit-font-smoothing: antialiased;

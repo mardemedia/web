@@ -4,6 +4,11 @@
   aria-hidden="true"
 >
 </div>
+<style>
+  #bubble-container {
+    contain: layout paint;
+  }
+</style>
 <script>
   import random from "./../../utils/random";
 
@@ -11,6 +16,9 @@
     const isSeahorse = Math.random() < 0.18;
     const bubble = document.createElement(isSeahorse ? "img" : "bubble-svg");
     const isCompactViewport = window.matchMedia("(max-width: 639px)").matches;
+    const maximumElements = isCompactViewport ? 6 : 10;
+
+    if (root.childElementCount >= maximumElements) return;
 
     const size = isSeahorse
       ? random(isCompactViewport ? 42 : 50, isCompactViewport ? 60 : 78)
@@ -86,7 +94,23 @@
       root.style.overflow = "hidden";
     }
 
-    setInterval(() => spawnBubble(root), random(600, 1000));
+    const isCompactViewport = window.matchMedia("(max-width: 639px)").matches;
+    const interval = isCompactViewport ? random(1300, 1900) : random(900, 1400);
+    let isVisible = true;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry?.isIntersecting ?? false;
+      },
+      { rootMargin: "200px 0px" },
+    );
+
+    observer.observe(root);
+
+    setInterval(() => {
+      if (!isVisible || document.hidden) return;
+      spawnBubble(root);
+    }, interval);
   }
 
   requestAnimationFrame(() => {
