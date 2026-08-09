@@ -7,3 +7,46 @@
 
     --font-primary: "Poppins", sans-serif;
 }
+
+:root {
+    color-scheme: light;
+    font-synthesis: none;
+}
+
+html {
+    scroll-padding-top: 5.5rem;
+}
+
+body {
+    margin: 0;
+    overflow-x: clip;
+    background: #303158;
+    font-family: var(--font-primary);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+::selection {
+    background: #f4c430;
+    color: #303158;
+}
+
+:where(a, button):focus-visible {
+    outline: 3px solid #f4c430;
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -1,9 +1,8 @@
 <button
   id="back-to-top"
-  class="flex justify-center items-center pointer-events-none
-         transition-all duration-300 w-10 h-10 p-3 rounded-full
-         bg-[#DEF3F4] text-black shadow-lg fixed bottom-5 right-2 z-50
-         opacity-0 cursor-pointer"
+  class="pointer-events-none fixed right-5 bottom-5 z-40 flex size-12 items-center justify-center
+         rounded-full border border-third/10 bg-[#DEF3F4]/95 text-xl text-third shadow-[0_12px_30px_rgba(20,26,58,0.22)]
+         opacity-0 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 sm:right-8 sm:bottom-8"
   aria-label="Go to top"
 >
   ↑
@@ -16,9 +15,7 @@
       transform: translateY(0);
     }
 
-    60% {
-      transform: translateY(-3px);
-    }
+    60% { transform: translateY(-2px); }
   }
 
   .animate-bounce-soft {
@@ -32,7 +29,7 @@
   const toggleVisibility = () => {
     if (!$btn) return;
 
-    if (window.scrollY > 100) {
+    if (window.scrollY > 120) {
       $btn.style.opacity = "1";
       $btn.style.pointerEvents = "auto";
       $btn.classList.add("animate-bounce-soft");
@@ -43,7 +40,7 @@
     }
   };
 
-  window.addEventListener("scroll", toggleVisibility);
+  window.addEventListener("scroll", toggleVisibility, { passive: true });
 
   toggleVisibility();
 

@@ -24,14 +24,19 @@ const { navLinks, brand, langSwitcher, menu }: Props = Astro.props;
 
 <aside
   id="aside-menu"
-  class="fixed inset-0 z-20 pointer-events-none opacity-0 transition-opacity duration-300 bg-black/30 backdrop-blur-sm lg:hidden"
+  class="pointer-events-none fixed inset-0 z-20 bg-third/45 opacity-0 backdrop-blur-sm transition-opacity duration-300 lg:hidden"
+  role="dialog"
+  aria-modal="true"
+  aria-hidden="true"
+  aria-label="Navigation menu"
+  inert
 >
   <div
     id="aside-panel"
-    class="absolute inset-0 md:inset-y-0 md:right-0 md:left-auto md:w-105 bg-[#DEF3F4] flex flex-col will-change-transform"
+    class="absolute inset-y-0 right-0 flex h-dvh w-full flex-col bg-[#DEF3F4] shadow-[-24px_0_70px_rgba(20,26,58,0.2)] will-change-transform sm:w-[min(30rem,100vw)]"
     style="transform: translateX(100%); opacity: 0; filter: blur(4px);"
   >
-    <header class="flex justify-between text-black py-5 px-5">
+    <header class="flex min-h-18 items-center justify-between border-b border-third/8 px-5 text-black sm:px-8">
       <IsotypeAnchor
         homeUrl={brand.homeUrl}
         desktopLogoSrc={brand.desktopLogoSrc}
@@ -41,25 +46,27 @@ const { navLinks, brand, langSwitcher, menu }: Props = Astro.props;
       <CrossButton />
     </header>
 
-    <section class="flex flex-col flex-1 h-dvh">
-      <div class="flex-1 overflow-y-auto">
+    <section class="flex min-h-0 flex-1 flex-col">
+      <div class="min-h-0 flex-1 overflow-y-auto">
         <nav>
-          <ul class="pt-5">
+          <ul class="px-5 py-6 sm:px-8">
             {
               navLinks.map((x) => (
                 <li>
                   <a
                     data-nav-link
-                    class="text-third pb-5 px-5 flex justify-between items-center"
+                    class="group flex items-center justify-between gap-6 border-b border-third/10 py-5 text-third"
                     href={x.url}
                   >
-                    <div class="flex flex-col uppercase gap-1">
-                      {x.label}
-                      <span class="normal-case opacity-70">
+                    <div class="flex flex-col gap-1">
+                      <span class="text-lg uppercase tracking-[0.04em]">
+                        {x.label}
+                      </span>
+                      <span class="text-sm normal-case leading-relaxed opacity-65">
                         {x.description}
                       </span>
                     </div>
-                    <RightArrow class="text-third" />
+                    <RightArrow class="h-5 w-5 shrink-0 text-third transition-transform group-hover:translate-x-1" />
                   </a>
                 </li>
               ))
@@ -67,37 +74,30 @@ const { navLinks, brand, langSwitcher, menu }: Props = Astro.props;
           </ul>
         </nav>
 
-        <hr class="text-third m-5 opacity-70" />
       </div>
 
-      <div class="mt-auto">
-        <div class="p-5 text-third">
-          <span class="text-xl mb-4">{menu.contactTitle}</span>
-          <address>
+      <div class="mt-auto border-t border-third/10 bg-white/25">
+        <div class="px-5 py-6 text-third sm:px-8">
+          <span class="mb-3 block text-lg">{menu.contactTitle}</span>
+          <address class="text-sm not-italic leading-relaxed text-third/75">
             <p>
               {menu.emailLabel}
-              <a href={`mailto:${menu.email}`}> {menu.email} </a>
+              <a class="text-third underline decoration-secondary underline-offset-4" href={`mailto:${menu.email}`}> {menu.email} </a>
             </p>
             <p>{menu.location}</p>
           </address>
         </div>
 
-        <div class="flex items-center mx-5">
-          <div class="grow border-t border-third"></div>
-          <span class="mx-4 text-third opacity-70">{menu.socialLabel}</span>
-          <div class="grow border-t border-third"></div>
-        </div>
-
-        <footer class="p-5 text-third relative">
+        <footer class="relative px-5 pb-6 text-third sm:px-8">
           <nav aria-label={menu.socialAriaLabel}>
-            <ul class="flex gap-4 items-center justify-center">
+            <ul class="flex items-center gap-3">
               <li>
-                <a href="https://facebook.com" target="_blank" rel="noopener">
+                <a class="grid size-10 place-items-center rounded-full border border-third/15 transition-colors hover:bg-white/50" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
                   <FBIcon class="text-third" />
                 </a>
               </li>
               <li>
-                <a href="https://instagram.com" target="_blank" rel="noopener">
+                <a class="grid size-10 place-items-center rounded-full border border-third/15 transition-colors hover:bg-white/50" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
                   <IGIcon class="text-third" />
                 </a>
               </li>
@@ -107,7 +107,7 @@ const { navLinks, brand, langSwitcher, menu }: Props = Astro.props;
           <LangButton
             href={langSwitcher.href}
             label={langSwitcher.label}
-            className="absolute bottom-5 right-5 font-light"
+            className="absolute right-5 bottom-7 px-3 py-2 text-xs tracking-[0.16em] sm:right-8"
           />
         </footer>
       </div>
@@ -116,12 +116,13 @@ const { navLinks, brand, langSwitcher, menu }: Props = Astro.props;
 </aside>
 
 <script>
-  import { $, $$ } from "../utils/dom";
+  import { $ } from "../utils/dom";
 
   const $asideMenu = $<HTMLElement>("#aside-menu")!;
   const $panel = $("#aside-panel")!;
   const $closeButton = $("#close-button")!;
-  const $navLinks = $$("[data-nav-link]")!;
+  const $burgerButton = $<HTMLButtonElement>("#burger-button")!;
+  const $navLinks = $asideMenu.querySelectorAll<HTMLElement>("[data-nav-link]");
 
   let isOpen = false;
 
@@ -130,6 +131,9 @@ const { navLinks, brand, langSwitcher, menu }: Props = Astro.props;
       $asideMenu.style.pointerEvents = "auto";
       $asideMenu.classList.remove("opacity-0");
       $asideMenu.classList.add("opacity-100");
+      $asideMenu.setAttribute("aria-hidden", "false");
+      $asideMenu.removeAttribute("inert");
+      $burgerButton.setAttribute("aria-expanded", "true");
 
       document.body.style.overflow = "hidden";
 
@@ -152,6 +156,8 @@ const { navLinks, brand, langSwitcher, menu }: Props = Astro.props;
           fill: "forwards",
         },
       );
+
+      $closeButton?.focus();
     });
 
     isOpen = true;
@@ -180,9 +186,12 @@ const { navLinks, brand, langSwitcher, menu }: Props = Astro.props;
 
     $asideMenu.classList.remove("opacity-100");
     $asideMenu.classList.add("opacity-0");
+    $asideMenu.setAttribute("aria-hidden", "true");
+    $burgerButton.setAttribute("aria-expanded", "false");
 
     setTimeout(() => {
       $asideMenu.style.pointerEvents = "none";
+      $asideMenu.setAttribute("inert", "");
       document.body.style.overflow = "";
     }, 280);
 
@@ -199,6 +208,10 @@ const { navLinks, brand, langSwitcher, menu }: Props = Astro.props;
 
   $asideMenu.addEventListener("click", (e) => {
     if (e.target === $asideMenu) closeMenu();
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && isOpen) closeMenu();
   });
 
   $navLinks.forEach((link) => {

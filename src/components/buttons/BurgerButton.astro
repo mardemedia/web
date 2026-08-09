@@ -2,6 +2,12 @@
 import Burguer from "./../icons/Burger.astro";
 ---
 
-<button id="burger-button" class="cursor-pointer lg:hidden">
+<button
+  id="burger-button"
+  class="grid size-11 cursor-pointer place-items-center rounded-full border border-third/10 text-third transition-colors hover:bg-white/50 lg:hidden"
+  aria-label="Open navigation menu"
+  aria-controls="aside-menu"
+  aria-expanded="false"
+>
   <Burguer />
 </button>

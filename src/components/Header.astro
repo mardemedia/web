@@ -14,54 +14,66 @@ const { copy }: Props = Astro.props;
 
 <header
   id="main-header"
-  class="sticky top-0 z-50 w-full flex justify-between items-center p-5 lg:py-2 lg:px-16 bg-[#DEF3F4] transition-shadow duration-300"
+  class="sticky top-0 z-50 w-full bg-[#DEF3F4] transition-[background-color,box-shadow,backdrop-filter] duration-300"
 >
-  <IsotypeAnchor
-    homeUrl={copy.brand.homeUrl}
-    desktopLogoSrc={copy.brand.desktopLogoSrc}
-    mobileLogoSrc={copy.brand.mobileLogoSrc}
-    alt={copy.brand.logoAlt}
-  />
-  <BurguerButton />
-  <AsideMenu
-    navLinks={copy.navLinks}
-    brand={copy.brand}
-    langSwitcher={copy.langSwitcher}
-    menu={copy.menu}
-  />
-  <nav class="hidden lg:block">
-    <ul class="flex gap-2">
-      <LangButton
-        href={copy.langSwitcher.href}
-        label={copy.langSwitcher.label}
-        className="text-third pb-1 px-2 flex justify-between items-center relative
+  <div
+    class="mx-auto flex min-h-18 w-full max-w-[1600px] items-center justify-between px-5 sm:px-8 lg:px-16"
+  >
+    <IsotypeAnchor
+      homeUrl={copy.brand.homeUrl}
+      desktopLogoSrc={copy.brand.desktopLogoSrc}
+      mobileLogoSrc={copy.brand.mobileLogoSrc}
+      alt={copy.brand.logoAlt}
+    />
+    <BurguerButton />
+    <AsideMenu
+      navLinks={copy.navLinks}
+      brand={copy.brand}
+      langSwitcher={copy.langSwitcher}
+      menu={copy.menu}
+    />
+    <nav class="hidden lg:block" aria-label="Main navigation">
+      <ul class="flex items-center gap-1 xl:gap-3">
+        <LangButton
+          href={copy.langSwitcher.href}
+          label={copy.langSwitcher.label}
+          className="text-third mr-2 px-3 py-2 text-xs tracking-[0.16em] transition-colors hover:text-primary"
+        />
+        {
+          copy.navLinks.map((x) => (
+            <li>
+              <a
+                data-nav-link
+                class="text-third px-3 py-2 flex justify-between items-center relative text-sm
                  after:content-[''] after:absolute after:left-0 after:bottom-0
                  after:h-0.5 after:w-full after:bg-secondary
                  after:scale-x-0 after:origin-left
                  after:transition-transform after:duration-300
                  hover:after:scale-x-100"
-      />
-      {
-        copy.navLinks.map((x) => (
-          <li>
-            <a
-              data-nav-link
-              class="text-third pb-1 px-2 flex justify-between items-center relative
-                 after:content-[''] after:absolute after:left-0 after:bottom-0
-                 after:h-0.5 after:w-full after:bg-secondary
-                 after:scale-x-0 after:origin-left
-                 after:transition-transform after:duration-300
-                 hover:after:scale-x-100"
-              href={`${x.url}`}
-            >
-              {x.label}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </nav>
+                href={`${x.url}`}
+              >
+                {x.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
 </header>
+
+<style>
+  #main-header {
+    position: sticky;
+    top: 0;
+  }
+
+  #main-header.header-scrolled {
+    background-color: rgb(222 243 244 / 0.68);
+    box-shadow: 0 10px 30px rgb(48 49 88 / 0.08);
+    backdrop-filter: blur(14px);
+  }
+</style>
 
 <script>
   import { $ } from "../utils/dom";
@@ -73,18 +85,10 @@ const { copy }: Props = Astro.props;
 
   const header = $("#main-header")!;
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 10) {
-      header.classList.add(
-        "shadow-[0_6px_16px_rgba(0,0,0,0.06)]",
-        "bg-[#DEF3F4]/90",
-      );
-    } else {
-      header.classList.remove(
-        "shadow-[0_6px_16px_rgba(0,0,0,0.06)]",
-        "bg-[#DEF3F4]/90",
-      );
-      header.classList.add("bg-[#DEF3F4]");
-    }
-  });
+  const updateHeader = () => {
+    header.classList.toggle("header-scrolled", window.scrollY > 10);
+  };
+
+  window.addEventListener("scroll", updateHeader, { passive: true });
+  updateHeader();
 </script>

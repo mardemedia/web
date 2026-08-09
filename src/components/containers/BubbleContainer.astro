@@ -1,6 +1,7 @@
 <div
   id="bubble-container"
-  class="absolute inset-0 pointer-events-none overflow-hidden z-50"
+  class="pointer-events-none absolute inset-0 z-20 overflow-hidden opacity-70"
+  aria-hidden="true"
 >
 </div>
 <script>
@@ -52,6 +53,7 @@
   }
 
   requestAnimationFrame(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const $container = document.getElementById("bubble-container")!;
     startBubbleLoop($container);
   });
