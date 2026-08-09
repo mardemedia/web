@@ -24,7 +24,7 @@ const { navLinks, brand, langSwitcher, menu }: Props = Astro.props;
 
 <aside
   id="aside-menu"
-  class="pointer-events-none fixed inset-0 z-20 bg-third/45 opacity-0 backdrop-blur-sm transition-opacity duration-300 lg:hidden"
+  class="pointer-events-none fixed inset-0 z-20 bg-third/45 opacity-0 backdrop-blur-sm transition-opacity duration-200 ease-out lg:hidden"
   role="dialog"
   aria-modal="true"
   aria-hidden="true"
@@ -33,8 +33,7 @@ const { navLinks, brand, langSwitcher, menu }: Props = Astro.props;
 >
   <div
     id="aside-panel"
-    class="absolute inset-y-0 right-0 flex h-dvh w-full flex-col bg-[#DEF3F4] shadow-[-24px_0_70px_rgba(20,26,58,0.2)] will-change-transform sm:w-[min(30rem,100vw)]"
-    style="transform: translateX(100%); opacity: 0; filter: blur(4px);"
+    class="absolute inset-y-0 right-0 flex h-dvh w-full translate-x-full flex-col overscroll-contain bg-[#DEF3F4] shadow-[-24px_0_70px_rgba(20,26,58,0.2)] transition-transform duration-300 ease-out will-change-transform sm:w-[min(30rem,100vw)]"
   >
     <header class="flex min-h-18 items-center justify-between border-b border-third/8 px-5 text-black sm:px-8">
       <IsotypeAnchor
@@ -127,75 +126,35 @@ const { navLinks, brand, langSwitcher, menu }: Props = Astro.props;
   let isOpen = false;
 
   const openMenu = () => {
+    isOpen = true;
+    $asideMenu.removeAttribute("inert");
+    $asideMenu.setAttribute("aria-hidden", "false");
+    $burgerButton.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+
     requestAnimationFrame(() => {
-      $asideMenu.style.pointerEvents = "auto";
-      $asideMenu.classList.remove("opacity-0");
-      $asideMenu.classList.add("opacity-100");
-      $asideMenu.setAttribute("aria-hidden", "false");
-      $asideMenu.removeAttribute("inert");
-      $burgerButton.setAttribute("aria-expanded", "true");
-
-      document.body.style.overflow = "hidden";
-
-      $panel.animate(
-        [
-          {
-            transform: "translateX(100%)",
-            opacity: 0,
-            filter: "blur(4px)",
-          },
-          {
-            transform: "translateX(0%)",
-            opacity: 1,
-            filter: "blur(0px)",
-          },
-        ],
-        {
-          duration: 350,
-          easing: "ease-out",
-          fill: "forwards",
-        },
-      );
+      $asideMenu.classList.remove("pointer-events-none", "opacity-0");
+      $asideMenu.classList.add("pointer-events-auto", "opacity-100");
+      $panel.classList.remove("translate-x-full");
+      $panel.classList.add("translate-x-0");
 
       $closeButton?.focus();
     });
-
-    isOpen = true;
   };
 
   const closeMenu = () => {
-    $panel.animate(
-      [
-        {
-          transform: "translateX(0%)",
-          opacity: 1,
-          filter: "blur(0px)",
-        },
-        {
-          transform: "translateX(100%)",
-          opacity: 0,
-          filter: "blur(4px)",
-        },
-      ],
-      {
-        duration: 280,
-        easing: "ease-in",
-        fill: "forwards",
-      },
-    );
-
-    $asideMenu.classList.remove("opacity-100");
-    $asideMenu.classList.add("opacity-0");
-    $asideMenu.setAttribute("aria-hidden", "true");
-    $burgerButton.setAttribute("aria-expanded", "false");
-
-    setTimeout(() => {
-      $asideMenu.style.pointerEvents = "none";
-      $asideMenu.setAttribute("inert", "");
-      document.body.style.overflow = "";
-    }, 280);
-
     isOpen = false;
+
+    $asideMenu.classList.remove("pointer-events-auto", "opacity-100");
+    $asideMenu.classList.add("pointer-events-none", "opacity-0");
+    $panel.classList.remove("translate-x-0");
+    $panel.classList.add("translate-x-full");
+
+    $asideMenu.setAttribute("aria-hidden", "true");
+    $asideMenu.setAttribute("inert", "");
+    $burgerButton.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+    $burgerButton.focus({ preventScroll: true });
   };
 
   const toggleMenu = () => {
