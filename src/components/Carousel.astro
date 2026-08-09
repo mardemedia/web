@@ -1,4 +1,6 @@
 ---
+import RightArrow from "./icons/RightArrow.astro";
+
 interface Props {
   slides: {
     img: {
@@ -13,11 +15,11 @@ interface Props {
 const { slides, className } = Astro.props;
 ---
 
-<div class={`swiper mySwiper w-full mx-auto pb-12 ${className}`}>
+<div class={`swiper mySwiper w-full mx-auto pb-8 ${className}`}>
   <div class="swiper-wrapper">
     {
       slides.map((slide) => (
-        <article class="swiper-slide group relative cursor-grab overflow-hidden rounded-[1.75rem] border border-white/15 bg-third/20 shadow-[0_24px_60px_rgba(20,26,58,0.2)] active:cursor-grabbing">
+        <article class="swiper-slide group relative cursor-grab overflow-hidden rounded-[1.75rem] border border-white/15 bg-transparent shadow-[0_24px_60px_rgba(20,26,58,0.2)] active:cursor-grabbing">
           <picture>
             <source media="(min-width: 1024px)" srcset={slide.img.desktop} />
 
@@ -41,8 +43,12 @@ const { slides, className } = Astro.props;
       ))
     }
   </div>
-  <div class="swiper-button-prev text-white!"></div>
-  <div class="swiper-button-next text-white!"></div>
+  <button type="button" class="swiper-button-prev" aria-label="Previous service">
+    <RightArrow class="h-3 w-3" />
+  </button>
+  <button type="button" class="swiper-button-next" aria-label="Next service">
+    <RightArrow class="h-3 w-3" />
+  </button>
 </div>
 <style is:global>
   @import "swiper/css";
@@ -62,23 +68,63 @@ const { slides, className } = Astro.props;
 
   .mySwiper .swiper-button-prev,
   .mySwiper .swiper-button-next {
+    top: 50%;
+    bottom: auto;
     width: 2.75rem;
     height: 2.75rem;
-    border: 1px solid rgb(255 255 255 / 0.3);
+    margin-top: 0;
+    border: 1px solid rgb(255 255 255 / 0.68);
     border-radius: 9999px;
-    background: rgb(48 49 88 / 0.72);
-    backdrop-filter: blur(10px);
+    background: transparent;
+    color: #ffffff;
+    filter: drop-shadow(0 3px 8px rgb(20 26 58 / 0.45));
+    transform: translateY(-50%);
+    transition:
+      border-color 180ms ease,
+      transform 180ms ease,
+      opacity 180ms ease;
+  }
+
+  .mySwiper .swiper-button-prev {
+    right: auto;
+    left: 0.75rem;
+  }
+
+  .mySwiper .swiper-button-next {
+    right: 0.75rem;
   }
 
   .mySwiper .swiper-button-prev::after,
   .mySwiper .swiper-button-next::after {
-    font-size: 0.8rem;
-    font-weight: 700;
+    display: none;
+  }
+
+  .mySwiper .swiper-button-prev svg,
+  .mySwiper .swiper-button-next svg {
+    width: 0.75rem;
+    height: 0.75rem;
+    flex: 0 0 0.75rem;
+  }
+
+  .mySwiper .swiper-button-prev:hover,
+  .mySwiper .swiper-button-next:hover {
+    border-color: #ffffff;
+    transform: translateY(-50%) scale(1.06);
+  }
+
+  .mySwiper .swiper-button-disabled {
+    opacity: 0.32;
   }
 
   @media (max-width: 639px) {
     .mySwiper {
       overflow: visible;
+    }
+
+    .mySwiper .swiper-button-prev,
+    .mySwiper .swiper-button-next {
+      width: 2.5rem;
+      height: 2.5rem;
     }
   }
 </style>
