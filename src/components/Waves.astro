@@ -1,16 +1,121 @@
 <svg
   xmlns="http://www.w3.org/2000/svg"
-  class="w-full h-full"
+  class="waves"
   viewBox="0 0 402 66"
   fill="none"
   preserveAspectRatio="none"
+  aria-hidden="true"
+  focusable="false"
 >
-  <path
-    d="M0 1C44.2864 32.0526 103.173 22.5789 131.886 18.8947C160.599 15.2105 241.385 -3.21053 271.072 18.8947C300.036 40.4623 398.492 2.90913 401.909 1.06953C401.933 1.02344 401.958 1 401.985 1C402.02 1 401.994 1.02367 401.909 1.06953C400.847 3.07993 401.509 48.1896 401.985 71H0V1Z"
-    fill="#22AFB3"
-    fill-opacity="0.7"></path>
-  <path
-    d="M109.531 0.272565C81.1977 3.99506 43.7003 31.6479 0 0.272577V71H396.664C396.184 47.4242 403.587 32.4215 388.292 16.8829C340.732 -31.4351 225.969 45.281 186.498 38.3154C151.17 32.0808 137.864 -3.44993 109.531 0.272565Z"
-    fill="#22AFB3"
-    fill-opacity="0.4"></path>
+  <g class="wave-layer wave-layer--back">
+    <path
+      class="wave-track wave-track--back"
+      d="M0 14C80 34 121 34 201 14C281 -6 322 -6 402 14C482 34 523 34 603 14C683 -6 724 -6 804 14V72H0Z"
+      fill="currentColor"
+    ></path>
+  </g>
+
+  <g class="wave-layer wave-layer--middle">
+    <path
+      class="wave-track wave-track--middle"
+      d="M0 24C110 45 292 3 402 24C512 45 694 3 804 24V72H0Z"
+      fill="currentColor"
+    ></path>
+  </g>
+
+  <g class="wave-layer wave-layer--front">
+    <path
+      class="wave-track wave-track--front"
+      d="M0 30C67 10 134 10 201 30C268 50 335 50 402 30C469 10 536 10 603 30C670 50 737 50 804 30V72H0Z"
+      fill="currentColor"
+    ></path>
+  </g>
 </svg>
+
+<style>
+  .waves {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .wave-layer,
+  .wave-track {
+    transform-box: fill-box;
+    transform-origin: 0 0;
+    will-change: transform;
+  }
+
+  .wave-layer--back {
+    color: rgba(34, 175, 179, 0.3);
+    animation: ocean-bob-back 5.5s ease-in-out infinite alternate;
+  }
+
+  .wave-layer--middle {
+    color: rgba(34, 175, 179, 0.46);
+    animation: ocean-bob-middle 4.6s ease-in-out -1.8s infinite alternate;
+  }
+
+  .wave-layer--front {
+    color: #22afb3;
+    animation: ocean-bob-front 3.8s ease-in-out -0.9s infinite alternate;
+  }
+
+  .wave-layer path {
+    fill: currentColor;
+  }
+
+  .wave-track--back {
+    animation: ocean-drift 22s linear -7s infinite reverse;
+  }
+
+  .wave-track--middle {
+    animation: ocean-drift 16s linear -4s infinite;
+  }
+
+  .wave-track--front {
+    animation: ocean-drift 11s linear -2s infinite;
+  }
+
+  @keyframes ocean-drift {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes ocean-bob-back {
+    from {
+      transform: translateY(-1.5px);
+    }
+    to {
+      transform: translateY(1.5px);
+    }
+  }
+
+  @keyframes ocean-bob-middle {
+    from {
+      transform: translateY(1px);
+    }
+    to {
+      transform: translateY(-1.5px);
+    }
+  }
+
+  @keyframes ocean-bob-front {
+    from {
+      transform: translateY(2px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wave-layer,
+    .wave-track {
+      animation: none;
+      transform: none;
+    }
+  }
+</style>

@@ -6,21 +6,33 @@ const LABELS: Record<lang, Record<string, string>> = {
     "meta.description":
       "Web development, custom software and multimedia services in Puerto Vallarta, Jalisco. Complete digital solutions for businesses.",
 
-    "hero.title.start": "Turn your ",
-    "hero.title.highlight": "ideas into reality",
-    "hero.cta": "Start your project →",
+    "hero.title.start": "Where your ideas ",
+    "hero.title.highlight": "come to life",
+    "hero.cta": "Dive in →",
 
-    "intro.title": "Where your ideas\ncome to life",
+    "intro.title": "We make your brand\nemerge",
+    "intro.title.highlight": "brand\nemerge",
     "intro.description":
-      "At Mar de Media, we bring your vision to life through digital experiences that deliver results.",
+      "Digital presence from the depths to the surface of Puerto Vallarta and Bahía de Banderas.",
 
-    "services.title": "Experience \nMar de Media \nthe way it's meant to be",
-    "services.cta": "Dive In",
+    "services.title": "We drive your\nbrand from the\ndepths",
+    "services.title.highlight": "from the\ndepths",
+    "services.cta": "Let's talk about your brand",
 
     "projects.eyebrow": "Selected work",
     "projects.title": "Ideas with direction",
+    "projects.title.highlight": "direction",
     "projects.description":
       "A glimpse into the digital experiences, identities and stories we can shape together.",
+    "brands.eyebrow": "Brands",
+    "brands.title": "Brands that rise to the surface",
+    "brands.title.highlight": "to the surface",
+    "brands.description":
+      "Meet some of the brands we have helped emerge through strategy, identity and design.",
+    "brands.cta": "See our work",
+    "brands.velvet.imageAlt": "Velvet Giardino brand identity",
+    "brands.cooltura.imageAlt": "Cooltura PV brand identity",
+    "brands.service": "Branding & naming",
     "projects.restaurancito.category": "Digital product",
     "projects.restaurancito.title": "Restaurancito",
     "projects.restaurancito.description":
@@ -32,15 +44,16 @@ const LABELS: Record<lang, Record<string, string>> = {
     "projects.restaurancito.status": "Coming soon",
     "projects.restaurancito.visitLabel": "Visit restaurancito.com",
     "packages.eyebrow": "Services",
-    "packages.title": "Packages",
+    "packages.title": "A kit made for you",
+    "packages.title.highlight": "made for you",
     "packages.includes": "Includes",
     "packages.viewLabel": "View package",
 
-    "contact.title": "Your journey to something extraordinary starts here.",
-    "contact.title.start": "Your journey to ",
+    "contact.title": "Your journey toward a solid digital presence starts here.",
+    "contact.title.start": "Your journey toward a ",
     "contact.title.end": " starts here.",
-    "contact.highlight": "something extraordinary",
-    "contact.cta": "Begin the Voyage",
+    "contact.highlight": "solid digital presence",
+    "contact.cta": "Let's talk about your brand",
 
     "nav.home.label": "Home",
     "nav.home.description": "Get back to home page",
@@ -48,18 +61,21 @@ const LABELS: Record<lang, Record<string, string>> = {
     "nav.services.description": "Take a dive into our services",
     "nav.projects.label": "Projects",
     "nav.projects.description": "Explore our creative work",
-    "nav.packages.label": "Packages",
-    "nav.packages.description": "Personalized packages for you",
-    "nav.contact.label": "Contact us",
-    "nav.contact.description": "Connect with us",
+    "nav.packages.label": "Kits",
+    "nav.packages.description": "A solution tailored to your brand's stage",
+    "nav.brands.label": "Brands",
+    "nav.brands.description": "Discover the brands we have helped emerge",
+    "nav.contact.label": "Contact",
+    "nav.contact.description": "Let's talk about your brand",
 
-    "menu.contact.title": "Let's Connect",
+    "menu.contact.title": "Let's talk about your brand",
     "menu.location": "Puerto Vallarta, Jalisco, Mexico.",
     "menu.socialLabel": "Follow Us",
     "menu.socialAriaLabel": "Social media",
 
     "footer.rights": "All Rights Reserved",
     "logo.alt": "Mar de Media",
+    "logo.tagline": "Marketing . development . multimedia",
 
     "comingSoon.meta.title": "Coming Soon | Mar de Media",
     "comingSoon.meta.description":
@@ -75,21 +91,33 @@ const LABELS: Record<lang, Record<string, string>> = {
     "meta.description":
       "Servicios de desarrollo web, software a medida y multimedia, en Puerto Vallarta, Jalisco. Soluciones digitales completas para empresas.",
 
-    "hero.title.start": "Convierte tus ",
-    "hero.title.highlight": "ideas en realidad",
-    "hero.cta": "Inicia tu proyecto →",
+    "hero.title.start": "Donde tus ideas ",
+    "hero.title.highlight": "cobran vida",
+    "hero.cta": "Sumérgete →",
 
-    "intro.title": "Donde tus ideas\ncobran vida",
+    "intro.title": "Hacemos que tu marca\nemerja",
+    "intro.title.highlight": "marca\nemerja",
     "intro.description":
-      "En Mar de Media, damos vida a tu visión a través de experiencias digitales que generan resultados.",
+      "Presencia digital de las profundidades a la superficie de Puerto Vallarta y Bahía de Banderas.",
 
-    "services.title": "Vive \nMar de Media\ncomo debe ser",
-    "services.cta": "Sumérgete",
+    "services.title": "Impulsamos tu\nmarca desde lo\nprofundo",
+    "services.title.highlight": "desde lo\nprofundo",
+    "services.cta": "Hablemos de tu marca",
 
     "projects.eyebrow": "Trabajo seleccionado",
     "projects.title": "Ideas con dirección",
+    "projects.title.highlight": "dirección",
     "projects.description":
       "Un vistazo a las experiencias digitales, identidades e historias que podemos crear juntos.",
+    "brands.eyebrow": "Marcas",
+    "brands.title": "Marcas que emergen hacia la superficie",
+    "brands.title.highlight": "hacia la superficie",
+    "brands.description":
+      "Conoce algunas de las marcas a las que hemos ayudado a emerger con estrategia, identidad y diseño.",
+    "brands.cta": "Ver nuestro trabajo",
+    "brands.velvet.imageAlt": "Identidad de marca de Velvet Giardino",
+    "brands.cooltura.imageAlt": "Identidad de marca de Cooltura PV",
+    "brands.service": "Branding & naming",
     "projects.restaurancito.category": "Producto digital",
     "projects.restaurancito.title": "Restaurancito",
     "projects.restaurancito.description":
@@ -101,15 +129,16 @@ const LABELS: Record<lang, Record<string, string>> = {
     "projects.restaurancito.status": "Próximamente",
     "projects.restaurancito.visitLabel": "Visitar restaurancito.com",
     "packages.eyebrow": "Servicios",
-    "packages.title": "Paquetes",
+    "packages.title": "El KIT a tu medida",
+    "packages.title.highlight": "a tu medida",
     "packages.includes": "Incluye",
     "packages.viewLabel": "Ver paquete",
 
-    "contact.title": "Tu viaje hacia algo extraordinario comienza aquí.",
-    "contact.title.start": "Tu viaje hacia ",
+    "contact.title": "Tu viaje hacia una presencia digital sólida comienza aquí.",
+    "contact.title.start": "Tu viaje hacia una ",
     "contact.title.end": " comienza aquí.",
-    "contact.highlight": "algo extraordinario",
-    "contact.cta": "Comienza el viaje",
+    "contact.highlight": "presencia digital sólida",
+    "contact.cta": "Hablemos de tu marca",
 
     "nav.home.label": "Inicio",
     "nav.home.description": "Vuelve al inicio y sigue explorando",
@@ -117,18 +146,21 @@ const LABELS: Record<lang, Record<string, string>> = {
     "nav.services.description": "Descubre todo lo que podemos hacer por ti",
     "nav.projects.label": "Proyectos",
     "nav.projects.description": "Explora nuestro trabajo creativo",
-    "nav.packages.label": "Paquetes",
-    "nav.packages.description": "Paquetes diseñados a la medida de tu marca",
-    "nav.contact.label": "Contáctanos",
-    "nav.contact.description": "Conecta con nosotros y lleva tu idea al siguiente nivel",
+    "nav.packages.label": "Kits",
+    "nav.packages.description": "Una solución a la medida de la etapa de tu marca",
+    "nav.brands.label": "Marcas",
+    "nav.brands.description": "Conoce las marcas que hemos ayudado a emerger",
+    "nav.contact.label": "Contacto",
+    "nav.contact.description": "Hablemos de tu marca",
 
-    "menu.contact.title": "Conectemos",
+    "menu.contact.title": "Hablemos de tu marca",
     "menu.location": "Puerto Vallarta, Jalisco, México.",
     "menu.socialLabel": "Síguenos",
     "menu.socialAriaLabel": "Redes sociales",
 
     "footer.rights": "Todos los derechos reservados",
     "logo.alt": "Mar de Media",
+    "logo.tagline": "Marketing . desarrollo . multimedia",
 
     "comingSoon.meta.title": "Próximamente | Mar de Media",
     "comingSoon.meta.description":
