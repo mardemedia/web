@@ -46,15 +46,18 @@ export interface HomePageCopy {
   };
   intro: {
     title: string;
+    titleHighlight: string;
     description: string;
   };
   services: {
     title: string;
+    titleHighlight: string;
     cta: string;
   };
   projects: {
     eyebrow: string;
     title: string;
+    titleHighlight: string;
     description: string;
     items: {
       category: string;
@@ -71,9 +74,23 @@ export interface HomePageCopy {
       visitLabel?: string;
     }[];
   };
+  brands: {
+    eyebrow: string;
+    title: string;
+    titleHighlight: string;
+    description: string;
+    cta: string;
+    items: {
+      name: string;
+      image: string;
+      imageAlt: string;
+      services: string[];
+    }[];
+  };
   packages: {
     eyebrow: string;
     title: string;
+    titleHighlight: string;
     includes: string;
     viewLabel: string;
   };
@@ -152,15 +169,18 @@ export const getHomePageCopy = (t: translate): HomePageCopy => ({
   },
   intro: {
     title: t("intro.title"),
+    titleHighlight: t("intro.title.highlight"),
     description: t("intro.description"),
   },
   services: {
     title: t("services.title"),
+    titleHighlight: t("services.title.highlight"),
     cta: t("services.cta"),
   },
   projects: {
     eyebrow: t("projects.eyebrow"),
     title: t("projects.title"),
+    titleHighlight: t("projects.title.highlight"),
     description: t("projects.description"),
     items: [
       {
@@ -183,9 +203,31 @@ export const getHomePageCopy = (t: translate): HomePageCopy => ({
       },
     ],
   },
+  brands: {
+    eyebrow: t("brands.eyebrow"),
+    title: t("brands.title"),
+    titleHighlight: t("brands.title.highlight"),
+    description: t("brands.description"),
+    cta: t("brands.cta"),
+    items: [
+      {
+        name: "Velvet Giardino",
+        image: "/brands/velvet-giardino.png",
+        imageAlt: t("brands.velvet.imageAlt"),
+        services: [t("brands.service")],
+      },
+      {
+        name: "Cooltura PV",
+        image: "/brands/cooltura-pv.png",
+        imageAlt: t("brands.cooltura.imageAlt"),
+        services: [t("brands.service")],
+      },
+    ],
+  },
   packages: {
     eyebrow: t("packages.eyebrow"),
     title: t("packages.title"),
+    titleHighlight: t("packages.title.highlight"),
     includes: t("packages.includes"),
     viewLabel: t("packages.viewLabel"),
   },

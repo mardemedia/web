@@ -1,6 +1,16 @@
 {
   "en": [
     {
+      "slug": "branding-and-naming",
+      "img": {
+        "mobile": "/stock/branding-service-mobile.webp",
+        "desktop": "/stock/branding-service-desktop.webp"
+      },
+      "tag": "hot",
+      "title": "Branding & naming",
+      "description": "We design the foundation of your brand: its name, visual identity and a professional digital structure that positions it clearly from the start."
+    },
+    {
       "slug": "web-development",
       "img": {
         "mobile": "/stock/web-service-mobile.webp",
@@ -8,7 +18,17 @@
       },
       "tag": "hot",
       "title": "Web development",
-      "description": "We build fast, scalable and visually stunning websites designed to convert visitors into customers and grow your business."
+      "description": "We create websites, applications and platforms optimized to turn visits into customers and support the growth of your business."
+    },
+    {
+      "slug": "multimedia",
+      "img": {
+        "mobile": "/stock/multimedia-service-mobile.webp",
+        "desktop": "/stock/multimedia-service-desktop.webp"
+      },
+      "tag": "hot",
+      "title": "Multimedia",
+      "description": "We create multimedia communication that captures attention, strengthens your brand presence and turns interest into action."
     },
     {
       "slug": "social-media",
@@ -18,17 +38,29 @@
       },
       "tag": "hot",
       "title": "Social media",
-      "description": "We create strategic content and campaigns that boost your visibility, engage your audience and turn followers into loyal clients."
-    },
+      "description": "We manage your social media with strategy, content and ongoing analysis to generate leads and maintain steady growth."
+    }
+  ],
+  "es": [
     {
-      "slug": "branding-and-naming",
+      "slug": "branding-y-naming",
       "img": {
         "mobile": "/stock/branding-service-mobile.webp",
         "desktop": "/stock/branding-service-desktop.webp"
       },
       "tag": "hot",
-      "title": "Branding & naming",
-      "description": "We craft memorable brands with strong identities and names that connect emotionally and stand out in competitive markets."
+      "title": "Branding y naming",
+      "description": "Diseñamos la base de tu marca: nombre, identidad gráfica y una estructura digital profesional para posicionarte con claridad desde el inicio."
+    },
+    {
+      "slug": "desarrollo-web",
+      "img": {
+        "mobile": "/stock/web-service-mobile.webp",
+        "desktop": "/stock/web-service-desktop.webp"
+      },
+      "tag": "hot",
+      "title": "Desarrollo web",
+      "description": "Creamos sitios web, aplicaciones y plataformas optimizadas para convertir visitas en clientes y acompañar el crecimiento de tu negocio."
     },
     {
       "slug": "multimedia",
@@ -38,19 +70,7 @@
       },
       "tag": "hot",
       "title": "Multimedia",
-      "description": "We produce high-quality visuals, videos and digital assets that elevate your brand and communicate your message with impact."
-    }
-  ],
-  "es": [
-    {
-      "slug": "desarrollo-web",
-      "img": {
-        "mobile": "/stock/web-service-mobile.webp",
-        "desktop": "/stock/web-service-desktop.webp"
-      },
-      "tag": "hot",
-      "title": "Desarrollo web",
-      "description": "Construimos sitios web rápidos, escalables y visualmente impactantes, diseñados para convertir visitantes en clientes y hacer crecer tu negocio."
+      "description": "Creamos comunicación multimedia que capta la atención, fortalece la presencia de tu marca y convierte el interés en acción."
     },
     {
       "slug": "redes-sociales",
@@ -60,27 +80,7 @@
       },
       "tag": "hot",
       "title": "Redes sociales",
-      "description": "Creamos contenido estratégico y campañas que aumentan tu visibilidad, conectan con tu audiencia y convierten seguidores en clientes leales."
-    },
-    {
-      "slug": "branding-y-naming",
-      "img": {
-        "mobile": "/stock/branding-service-mobile.webp",
-        "desktop": "/stock/branding-service-desktop.webp"
-      },
-      "tag": "hot",
-      "title": "Branding y naming",
-      "description": "Creamos marcas memorables con identidades sólidas y nombres que conectan emocionalmente y destacan en mercados competitivos."
-    },
-    {
-      "slug": "multimedia",
-      "img": {
-        "mobile": "/stock/multimedia-service-mobile.webp",
-        "desktop": "/stock/multimedia-service-desktop.webp"
-      },
-      "tag": "hot",
-      "title": "Multimedia",
-      "description": "Producimos contenido visual, videos y recursos digitales de alta calidad que elevan tu marca y comunican tu mensaje con impacto."
+      "description": "Administramos tus redes con estrategia, contenido y análisis continuo para generar oportunidades y mantener un crecimiento constante."
     }
   ]
 }

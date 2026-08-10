@@ -2,64 +2,124 @@
   "en": [
     {
       "img": {
-        "mobile": "/stock/location-shoot-mobile.webp",
-        "desktop": "/stock/location-shoot-desktop.webp"
+        "mobile": "/stock/branding-service-mobile.webp",
+        "desktop": "/stock/branding-service-desktop.webp"
       },
-      "tag": "Included",
-      "title": "Location Photo Session",
-      "description": "Show your business in its best light with a professional on-location photoshoot designed to capture your space, team and brand essence. Included with your web development to create a cohesive and high-impact online presence.",
+      "tag": "Brand + identity",
+      "title": "Strategic Presence Kit",
+      "description": "We design the foundation of your brand with a professional digital structure. The goal: clarity and positioning from the start.",
       "features": [
-        "On-location shooting",
-        "Brand-focused visuals",
-        "Team & space coverage",
-        "Optimized for web use"
+        "Logo and visual identity",
+        "Corporate email",
+        "Official social profiles",
+        "Professional digital structure"
       ]
     },
     {
       "img": {
-        "mobile": "/stock/product-shoot-mobile.webp",
-        "desktop": "/stock/product-shoot-desktop.webp"
+        "mobile": "/stock/web-service-mobile.webp",
+        "desktop": "/stock/web-service-desktop.webp"
       },
-      "tag": "Included",
-      "title": "Product Photo Session",
-      "description": "Highlight your products with high-quality visuals that attract attention and drive sales. We create clean, professional images ready to elevate your website and marketing materials. Included with your web development.",
+      "tag": "Smart expansion",
+      "title": "Smart Web Development Kit",
+      "description": "Your business needs more than a page. We create optimized digital solutions that turn visits into customers.",
       "features": [
-        "Product-focused photography",
-        "Clean and professional styling",
-        "High-resolution assets",
-        "Ready for web & marketing"
+        "Strategic website",
+        "Dynamic web application",
+        "Mobile application",
+        "Code audit and optimization"
+      ]
+    },
+    {
+      "img": {
+        "mobile": "/stock/multimedia-service-mobile.webp",
+        "desktop": "/stock/multimedia-service-desktop.webp"
+      },
+      "tag": "Multimedia communication",
+      "title": "Content That Connects Kit",
+      "description": "We capture attention to inspire action through multimedia communication focused on retention and brand presence.",
+      "features": [
+        "Communication strategy",
+        "Brand photography",
+        "Video and multimedia assets",
+        "Retention-focused content"
+      ]
+    },
+    {
+      "img": {
+        "mobile": "/stock/social-service-mobile.webp",
+        "desktop": "/stock/social-service-desktop.webp"
+      },
+      "tag": "Digital growth",
+      "title": "Management and Growth Kit",
+      "description": "We do more than publish: we build a system designed to generate leads and maintain steady growth.",
+      "features": [
+        "Social media management",
+        "Content strategy",
+        "Monitoring and optimization",
+        "Lead generation"
       ]
     }
   ],
   "es": [
     {
       "img": {
-        "mobile": "/stock/location-shoot-mobile.webp",
-        "desktop": "/stock/location-shoot-desktop.webp"
+        "mobile": "/stock/branding-service-mobile.webp",
+        "desktop": "/stock/branding-service-desktop.webp"
       },
-      "tag": "Incluido",
-      "title": "Sesión de Fotos en Locación",
-      "description": "Muestra tu negocio en su mejor versión con una sesión fotográfica profesional en locación que captura tu espacio, tu equipo y la esencia de tu marca. Incluido con el desarrollo web para lograr una presencia digital coherente y de alto impacto.",
+      "tag": "Brand + identidad",
+      "title": "KIT Presencia Estratégica",
+      "description": "Diseñamos la base de tu marca con una estructura digital profesional. El objetivo: claridad y posicionamiento desde el inicio.",
       "features": [
-        "Sesión en locación",
-        "Enfoque en identidad de marca",
-        "Captura de equipo y espacio",
-        "Optimizado para web"
+        "Logo e identidad gráfica",
+        "Correo corporativo",
+        "Redes oficiales",
+        "Estructura digital profesional"
       ]
     },
     {
       "img": {
-        "mobile": "/stock/product-shoot-mobile.webp",
-        "desktop": "/stock/product-shoot-desktop.webp"
+        "mobile": "/stock/web-service-mobile.webp",
+        "desktop": "/stock/web-service-desktop.webp"
       },
-      "tag": "Incluido",
-      "title": "Sesión de Fotos de Producto",
-      "description": "Destaca tus productos con imágenes de alta calidad que captan la atención y aumentan tus ventas. Creamos contenido visual profesional listo para potenciar tu sitio web y materiales de marketing. Incluido con el desarrollo web.",
+      "tag": "Expansión inteligente",
+      "title": "KIT Desarrollo Web Inteligente",
+      "description": "Tu negocio necesita más que una página. Creamos soluciones digitales optimizadas para convertir visitas en clientes.",
       "features": [
-        "Fotografía de producto",
-        "Estilo limpio y profesional",
-        "Imágenes en alta resolución",
-        "Listo para web y marketing"
+        "Página web estratégica",
+        "Aplicación web dinámica",
+        "Aplicación móvil",
+        "Auditoría y optimización de código"
+      ]
+    },
+    {
+      "img": {
+        "mobile": "/stock/multimedia-service-mobile.webp",
+        "desktop": "/stock/multimedia-service-desktop.webp"
+      },
+      "tag": "Comunicación multimedia",
+      "title": "KIT Contenido que Conecta",
+      "description": "Captamos atención para generar acción con comunicación multimedia orientada a la retención y presencia de tu marca.",
+      "features": [
+        "Estrategia de comunicación",
+        "Fotografía de marca",
+        "Video y piezas multimedia",
+        "Contenido orientado a retención"
+      ]
+    },
+    {
+      "img": {
+        "mobile": "/stock/social-service-mobile.webp",
+        "desktop": "/stock/social-service-desktop.webp"
+      },
+      "tag": "Crecimiento digital",
+      "title": "KIT Gestión y Crecimiento",
+      "description": "No solo publicamos: construimos un sistema diseñado para generar leads y mantener un crecimiento constante.",
+      "features": [
+        "Administración de redes sociales",
+        "Estrategia de contenido",
+        "Monitoreo y optimización",
+        "Generación de leads"
       ]
     }
   ]
