@@ -1,7 +1,6 @@
 ---
 import BurguerButton from "./buttons/BurgerButton.astro";
 import AsideMenu from "./AsideMenu.astro";
-import IsotypeAnchor from "./IsotypeAnchor.astro";
 import LangButton from "./buttons/LangButton.astro";
 import type { HeaderCopy } from "../i18n/content";
 
@@ -19,12 +18,25 @@ const { copy }: Props = Astro.props;
   <div
     class="mx-auto flex min-h-18 w-full max-w-[1600px] items-center justify-between px-5 sm:px-8 lg:px-16"
   >
-    <IsotypeAnchor
-      homeUrl={copy.brand.homeUrl}
-      desktopLogoSrc={copy.brand.desktopLogoSrc}
-      mobileLogoSrc={copy.brand.mobileLogoSrc}
-      alt={copy.brand.logoAlt}
-    />
+    <a
+      href={copy.brand.homeUrl}
+      class="inline-flex shrink-0 items-center gap-3"
+      aria-label={copy.brand.logoAlt}
+    >
+      <img
+        src={copy.brand.mobileLogoSrc}
+        alt=""
+        aria-hidden="true"
+        width="48"
+        height="48"
+        class="h-9 w-auto sm:h-10 lg:h-12"
+      />
+      <span
+        class="hidden whitespace-nowrap text-center text-xs uppercase leading-none tracking-[0.12em] text-third/80 lg:block"
+      >
+        {copy.brand.tagline}
+      </span>
+    </a>
     <BurguerButton />
     <AsideMenu
       navLinks={copy.navLinks}

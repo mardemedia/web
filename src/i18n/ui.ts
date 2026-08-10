@@ -75,6 +75,7 @@ const LABELS: Record<lang, Record<string, string>> = {
 
     "footer.rights": "All Rights Reserved",
     "logo.alt": "Mar de Media",
+    "logo.tagline": "Marketing . development . multimedia",
 
     "comingSoon.meta.title": "Coming Soon | Mar de Media",
     "comingSoon.meta.description":
@@ -159,6 +160,7 @@ const LABELS: Record<lang, Record<string, string>> = {
 
     "footer.rights": "Todos los derechos reservados",
     "logo.alt": "Mar de Media",
+    "logo.tagline": "Marketing . desarrollo . multimedia",
 
     "comingSoon.meta.title": "Próximamente | Mar de Media",
     "comingSoon.meta.description":

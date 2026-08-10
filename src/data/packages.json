@@ -20,14 +20,44 @@
         "mobile": "/stock/web-service-mobile.webp",
         "desktop": "/stock/web-service-desktop.webp"
       },
-      "tag": "Smart expansion",
-      "title": "Smart Web Development Kit",
-      "description": "Your business needs more than a page. We create optimized digital solutions that turn visits into customers.",
+      "tag": "Web application development",
+      "title": "Web Application Kit",
+      "description": "We build a browser-based product for managing processes, users or information through a custom digital platform.",
       "features": [
-        "Strategic website",
-        "Dynamic web application",
-        "Mobile application",
-        "Code audit and optimization"
+        "Product flows and functional definition",
+        "Responsive web application",
+        "Users, roles and data management",
+        "API and business-tool integrations"
+      ]
+    },
+    {
+      "img": {
+        "mobile": "/stock/web-service-mobile.webp",
+        "desktop": "/stock/web-service-desktop.webp"
+      },
+      "tag": "Mobile development",
+      "title": "Mobile Application Kit",
+      "description": "We transform your service or business idea into an intuitive mobile experience built around real user needs.",
+      "features": [
+        "User flows and product definition",
+        "Mobile interface design",
+        "Cross-platform application",
+        "API and service integrations"
+      ]
+    },
+    {
+      "img": {
+        "mobile": "/stock/web-service-mobile.webp",
+        "desktop": "/stock/web-service-desktop.webp"
+      },
+      "tag": "SEO + static landing",
+      "title": "Marketing Landing Kit",
+      "description": "A static landing page built with Astro for campaigns, launches or promotions, including the essential SEO setup for search visibility.",
+      "features": [
+        "Static landing page built with Astro",
+        "Technical SEO and on-page structure",
+        "Fast, lightweight HTML with no unnecessary JavaScript",
+        "Simple deployment and a strong performance baseline"
       ]
     },
     {
@@ -59,6 +89,21 @@
         "Monitoring and optimization",
         "Lead generation"
       ]
+    },
+    {
+      "img": {
+        "mobile": "/stock/branding-service-mobile.webp",
+        "desktop": "/stock/branding-service-desktop.webp"
+      },
+      "tag": "Tailored solution",
+      "title": "Custom Kit",
+      "description": "We combine the services your project actually needs. Pricing is quoted individually according to the requested scope, features, timeline and deliverables.",
+      "features": [
+        "Flexible service selection",
+        "Scope and project-phase definition",
+        "Custom timeline and deliverables",
+        "Price based on requested requirements"
+      ]
     }
   ],
   "es": [
@@ -82,14 +127,44 @@
         "mobile": "/stock/web-service-mobile.webp",
         "desktop": "/stock/web-service-desktop.webp"
       },
-      "tag": "Expansión inteligente",
-      "title": "KIT Desarrollo Web Inteligente",
-      "description": "Tu negocio necesita más que una página. Creamos soluciones digitales optimizadas para convertir visitas en clientes.",
+      "tag": "Desarrollo de aplicación web",
+      "title": "KIT Aplicación Web",
+      "description": "Construimos un producto accesible desde el navegador para administrar procesos, usuarios o información mediante una plataforma a la medida.",
       "features": [
-        "Página web estratégica",
-        "Aplicación web dinámica",
-        "Aplicación móvil",
-        "Auditoría y optimización de código"
+        "Flujos y definición funcional",
+        "Aplicación web responsiva",
+        "Gestión de usuarios, roles y datos",
+        "Integraciones con APIs y herramientas de negocio"
+      ]
+    },
+    {
+      "img": {
+        "mobile": "/stock/web-service-mobile.webp",
+        "desktop": "/stock/web-service-desktop.webp"
+      },
+      "tag": "Desarrollo móvil",
+      "title": "KIT Aplicación Móvil",
+      "description": "Convertimos tu servicio o idea de negocio en una experiencia móvil intuitiva, construida alrededor de necesidades reales.",
+      "features": [
+        "Flujos y definición del producto",
+        "Diseño de interfaz móvil",
+        "Aplicación multiplataforma",
+        "Integraciones con APIs y servicios"
+      ]
+    },
+    {
+      "img": {
+        "mobile": "/stock/web-service-mobile.webp",
+        "desktop": "/stock/web-service-desktop.webp"
+      },
+      "tag": "SEO + landing estática",
+      "title": "KIT Landing de Marketing",
+      "description": "Una landing estática desarrollada con Astro para campañas, lanzamientos o promociones, con la configuración SEO esencial para mejorar su visibilidad en buscadores.",
+      "features": [
+        "Landing estática desarrollada con Astro",
+        "SEO técnico y estructura on-page",
+        "HTML rápido y ligero, sin JavaScript innecesario",
+        "Despliegue simple y una base sólida de rendimiento"
       ]
     },
     {
@@ -120,6 +195,21 @@
         "Estrategia de contenido",
         "Monitoreo y optimización",
         "Generación de leads"
+      ]
+    },
+    {
+      "img": {
+        "mobile": "/stock/branding-service-mobile.webp",
+        "desktop": "/stock/branding-service-desktop.webp"
+      },
+      "tag": "Solución a la medida",
+      "title": "KIT Personalizado",
+      "description": "Combinamos los servicios que tu proyecto realmente necesita. El precio se cotiza de manera individual según el alcance, las funcionalidades, los tiempos y los entregables solicitados.",
+      "features": [
+        "Selección flexible de servicios",
+        "Definición de alcance y etapas",
+        "Tiempos y entregables personalizados",
+        "Precio según los requerimientos solicitados"
       ]
     }
   ]

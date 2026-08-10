@@ -9,6 +9,7 @@ export interface LanguageSwitcherCopy {
 export interface BrandCopy {
   homeUrl: string;
   logoAlt: string;
+  tagline: string;
   desktopLogoSrc: string;
   mobileLogoSrc: string;
 }
@@ -139,6 +140,7 @@ export const getNavLinks = (t: translate, homeUrl: string): Route[] => [
 export const getBrandCopy = (t: translate, locale: lang, homeUrl: string): BrandCopy => ({
   homeUrl,
   logoAlt: t("logo.alt"),
+  tagline: t("logo.tagline"),
   desktopLogoSrc: `/imagotipo-mar-de-media-${locale}.svg`,
   mobileLogoSrc: "/isotype.svg",
 });
