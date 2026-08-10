@@ -115,14 +115,14 @@ export interface ComingSoonCopy {
 
 export const getNavLinks = (t: translate, homeUrl: string): Route[] => [
   {
-    label: t("nav.home.label"),
-    description: t("nav.home.description"),
-    url: homeUrl,
-  },
-  {
     label: t("nav.services.label"),
     description: t("nav.services.description"),
     url: "#services-section",
+  },
+  {
+    label: t("nav.brands.label"),
+    description: t("nav.brands.description"),
+    url: "#brands-section",
   },
   {
     label: t("nav.projects.label"),
@@ -133,11 +133,6 @@ export const getNavLinks = (t: translate, homeUrl: string): Route[] => [
     label: t("nav.packages.label"),
     description: t("nav.packages.description"),
     url: "#packages-section",
-  },
-  {
-    label: t("nav.contact.label"),
-    description: t("nav.contact.description"),
-    url: "#contact-section",
   },
 ];
 

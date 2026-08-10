@@ -25,8 +25,8 @@ const LABELS: Record<lang, Record<string, string>> = {
     "projects.description":
       "A glimpse into the digital experiences, identities and stories we can shape together.",
     "brands.eyebrow": "Brands",
-    "brands.title": "Brands that emerge from the depths",
-    "brands.title.highlight": "from the depths",
+    "brands.title": "Brands that rise to the surface",
+    "brands.title.highlight": "to the surface",
     "brands.description":
       "Meet some of the brands we have helped emerge through strategy, identity and design.",
     "brands.cta": "See our work",
@@ -63,6 +63,8 @@ const LABELS: Record<lang, Record<string, string>> = {
     "nav.projects.description": "Explore our creative work",
     "nav.packages.label": "Kits",
     "nav.packages.description": "A solution tailored to your brand's stage",
+    "nav.brands.label": "Brands",
+    "nav.brands.description": "Discover the brands we have helped emerge",
     "nav.contact.label": "Contact",
     "nav.contact.description": "Let's talk about your brand",
 
@@ -107,8 +109,8 @@ const LABELS: Record<lang, Record<string, string>> = {
     "projects.description":
       "Un vistazo a las experiencias digitales, identidades e historias que podemos crear juntos.",
     "brands.eyebrow": "Marcas",
-    "brands.title": "Marcas que emergen desde lo profundo",
-    "brands.title.highlight": "desde lo profundo",
+    "brands.title": "Marcas que emergen hacia la superficie",
+    "brands.title.highlight": "hacia la superficie",
     "brands.description":
       "Conoce algunas de las marcas a las que hemos ayudado a emerger con estrategia, identidad y diseño.",
     "brands.cta": "Ver nuestro trabajo",
@@ -145,6 +147,8 @@ const LABELS: Record<lang, Record<string, string>> = {
     "nav.projects.description": "Explora nuestro trabajo creativo",
     "nav.packages.label": "Kits",
     "nav.packages.description": "Una solución a la medida de la etapa de tu marca",
+    "nav.brands.label": "Marcas",
+    "nav.brands.description": "Conoce las marcas que hemos ayudado a emerger",
     "nav.contact.label": "Contacto",
     "nav.contact.description": "Hablemos de tu marca",
 

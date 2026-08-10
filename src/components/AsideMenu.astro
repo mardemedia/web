@@ -49,6 +49,13 @@ const { navLinks, brand, langSwitcher, menu }: Props = Astro.props;
       <div class="min-h-0 flex-1 overflow-y-auto">
         <nav>
           <ul class="px-5 py-6 sm:px-8">
+            <li>
+              <LangButton
+                href={langSwitcher.href}
+                label={langSwitcher.label}
+                className="block border-b border-third/10 py-5 text-lg tracking-[0.08em] text-third"
+              />
+            </li>
             {
               navLinks.map((x) => (
                 <li>
@@ -103,11 +110,6 @@ const { navLinks, brand, langSwitcher, menu }: Props = Astro.props;
             </ul>
           </nav>
 
-          <LangButton
-            href={langSwitcher.href}
-            label={langSwitcher.label}
-            className="absolute right-5 bottom-7 px-3 py-2 text-xs tracking-[0.16em] sm:right-8"
-          />
         </footer>
       </div>
     </section>
